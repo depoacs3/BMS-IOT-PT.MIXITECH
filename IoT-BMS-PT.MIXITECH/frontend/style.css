@@ -1,0 +1,2320 @@
+/* ============================================================
+   BMS IoT — PT MIXITECH GRAHA TEKNIK
+   Identitas visual baru (industrial, brand merah-biru-putih).
+   Palet sengaja berbeda dari proyek referensi CITOTOXCI.
+   ============================================================ */
+
+:root {
+  /* Latar & panel */
+  --bg: #F4F6FB;
+  --bg-grad-1: #F7F9FC;
+  --bg-grad-2: #E6EAF3;
+  --bg-glow-blue: rgba(20, 70, 200, 0.08);
+  --bg-glow-red: rgba(210, 30, 50, 0.06);
+  --panel: #FCFDFF;
+  --ink: #1B2333;
+  --num: #101826;
+  --muted: #5C6B82;
+  --border: #D7DFEA;
+  --chart-grid: #B9C2D4;
+  --hover: #EEF2F8;
+  --shadow: 0 8px 22px rgba(22, 34, 60, 0.09);
+  --shadow-h: 0 16px 34px rgba(22, 34, 60, 0.16);
+  --r: 20px;
+
+  /* Aksen */
+  --green: #0FA37A;
+  --green-d: #0B7E5F;
+  --red: #D92D3E;
+  --red-d: #B01F2F;
+  --orange: #EE8A3A;
+  --orange-d: #C86E1E;
+  --blue: #1E50D8;
+  --blue-d: #163CA6;
+  --tint-blue: rgba(30, 80, 216, 0.12);
+  --tint-green: rgba(15, 163, 122, 0.12);
+  --tint-red: rgba(217, 45, 62, 0.10);
+  --tint-orange: rgba(238, 138, 58, 0.16);
+
+  /* Bar atas */
+  --bar-bg-1: #FCFDFF;
+  --bar-bg-2: #EFF3F9;
+  --bar-line: #D7DFEA;
+  --bar-text: #5C6B82;
+  --bar-text-strong: #1B2333;
+  --title-1: #1B2333;
+  --title-2: #4A5A75;
+  --subtitle: #5C6B82;
+
+  --chip-bg: rgba(27, 35, 51, 0.05);
+  --chip-bg-solid: #FCFDFF;
+  --chip-line: rgba(27, 35, 51, 0.10);
+  --chip-text: #4B5A72;
+  --chip-val: #2C3A55;
+
+  /* Header panel */
+  --head-1: #1F2E55;
+  --head-2: #12203F;
+  --head-text: #EFF3FB;
+  --head-icon: #9FB4DD;
+  --head-line: rgba(0, 0, 0, 0.32);
+  --title-solid: #3423B6;
+  --panel-accent-line: #3423B6;
+  
+
+  /* Tombol */
+  --sw-1: #E8EDF6;
+  --sw-2: #C4CFE2;
+  --sw-fg: #2A3852;
+  --sw-line: rgba(255, 255, 255, 0.65);
+
+  --mono: "Cascadia Code", "JetBrains Mono", "Consolas", "SF Mono", monospace;
+}
+
+html[data-theme="dark"] {
+  --bg: #0B1020;
+  --bg-grad-1: #101830;
+  --bg-grad-2: #070B16;
+  --bg-glow-blue: rgba(40, 90, 240, 0.16);
+  --bg-glow-red: rgba(230, 50, 70, 0.10);
+  --panel: #16203A;
+  --ink: #E9EFF9;
+  --num: #F4F8FF;
+  --muted: #8A98B5;
+  --border: rgba(255, 255, 255, 0.10);
+  --chart-grid: rgba(160, 178, 210, 0.38);
+  --hover: rgba(255, 255, 255, 0.05);
+  --shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  --shadow-h: 0 18px 40px rgba(0, 0, 0, 0.60);
+  --green: #1FC38F;
+  --green-d: #129A70;
+  --red: #F2556B;
+  --red-d: #C22E42;
+  --orange: #F5A05A;
+  --orange-d: #C47A2E;
+  --blue: #5A86F2;
+  --blue-d: #3B5FD0;
+  --tint-blue: rgba(90, 134, 242, 0.16);
+  --tint-green: rgba(31, 195, 143, 0.14);
+  --tint-red: rgba(242, 85, 107, 0.14);
+  --tint-orange: rgba(245, 160, 90, 0.16);
+  --bar-bg-1: #162038;
+  --bar-bg-2: #0E1526;
+  --bar-line: #080D18;
+  --bar-text: #8A98B5;
+  --bar-text-strong: #E9EFF9;
+  --title-1: #F4F8FF;
+  --title-2: #9FB0CC;
+  --subtitle: #7E8CAA;
+  --chip-bg: rgba(255, 255, 255, 0.07);
+  --chip-bg-solid: rgba(255, 255, 255, 0.05);
+  --chip-line: rgba(255, 255, 255, 0.12);
+  --chip-text: #A9B7D2;
+  --chip-val: #DCE5F2;
+  --head-1: #263459;
+  --head-2: #121A30;
+  --head-text: #EFF3FB;
+  --head-icon: #A6B8DC;
+  --head-line: rgba(0, 0, 0, 0.42);
+  --title-solid: #6B5CF0;
+  --panel-accent-line: #3423B6;
+  
+  --sw-1: #27334E;
+  --sw-2: #1A2338;
+  --sw-fg: #D7E0EE;
+  --sw-line: rgba(255, 255, 255, 0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+img { max-width: 100%; }
+body {
+  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(1100px 520px at 88% -8%, var(--bg-glow-blue), transparent 60%),
+              radial-gradient(1100px 520px at 8% 112%, var(--bg-glow-red), transparent 60%),
+              linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2));
+  background-attachment: fixed;
+  color: var(--ink);
+  display: flex; flex-direction: column;
+  /* Kiosk/desktop: satu layar penuh tanpa scroll. Mobile/sempit di-override
+     menjadi overflow-y:auto supaya konten tidak terpotong (lihat responsive). */
+  overflow: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ============================================================
+   Header  [h 7mxJPuDFSXZcXd]
+   ============================================================ */
+.topbar {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 22px;
+  padding: 8px 26px;
+  height: 14vh; min-height: 96px;
+  flex: 0 0 auto;
+  background: linear-gradient(180deg, var(--bar-bg-1), var(--bar-bg-2));
+  box-shadow: 0 4px 18px rgba(22, 34, 60, 0.08);
+}
+.topbar::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 3px;
+  background: var(--topbar-accent-line);
+}
+.hdr-left { justify-self: start; display: flex; align-items: center; gap: 24px; min-width: 0; }
+.hdr-left .logo-slot {
+  width: auto; height: clamp(60px, 12vh - 24px, 110px);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 6px;
+}
+.hdr-left .logo-slot img { width: auto; height: 100%; max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.hdr-center {
+  /* Pusatkan judul TERHADAP VIEWPORT (bukan sisa ruang di antara logo & jam).
+     Di layout grid `auto 1fr auto`, kolom tengah hanya sedatar kolom kiri &
+     kanan — karena logo (kiri) lebih lebar dari blok jam (kanan), judul
+     melenceng 20-53px ke kiri pada layar laptop sempit dan terasa "tidak
+     simetris". position:absolute + translateX(-50%) menguncinya ke tengah
+     layar pada SEMUA resolusi; pointer-events dipindah ke anak agar area
+     kosong di kiri-kanan judul tidak menutupi tombol tema. */
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: min(46vw, 620px);
+  pointer-events: none;
+  text-align: center; min-width: 0; z-index: 1;
+}
+.hdr-center h1, .hdr-center .subtitle { pointer-events: auto; }
+.hdr-center h1 {
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 800; letter-spacing: 3px;
+  white-space: nowrap; line-height: 1.02;
+  color: var(--title-solid);
+}
+.hdr-center .subtitle {
+  display: block;
+  font-size: clamp(13px, 1.2vw, 18px);
+  letter-spacing: 4px; line-height: 1.15;
+  color: var(--subtitle); margin-top: 2px;
+  font-weight: 600; white-space: nowrap;
+}
+.hdr-right { justify-self: end; display: flex; align-items: center; gap: 14px; }
+.clock-block { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.clock {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 800; letter-spacing: 2px; line-height: 1.1;
+  color: var(--bar-text-strong);
+}
+#date { font-size: clamp(14px, 1.3vw, 20px); color: var(--bar-text-strong); letter-spacing: 1.2px; font-weight: 700; }
+.theme-toggle {
+  flex: 0 0 auto; width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 12px; cursor: pointer; user-select: none;
+  color: var(--chip-text); background: var(--chip-bg);
+  border: 1px solid var(--chip-line);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+.theme-toggle:hover { color: var(--ink); background: var(--chip-bg-solid); border-color: var(--blue); transform: translateY(-2px); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .ico-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .ico-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .ico-sun { display: block; }
+
+/* ============================================================
+   Layout utama
+   ============================================================ */
+main {
+  position: relative; z-index: 1;
+  flex: 1 1 auto; min-height: 0;
+  overflow: hidden;
+  padding: 10px 22px 8px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ============================================================
+   Panel
+   ============================================================ */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  transition: box-shadow 0.22s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.panel:hover { box-shadow: var(--shadow-h); }
+.panel-head {
+  position: relative; overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: 10px;
+  padding: 12px 18px;
+  height: 52px;
+  background: linear-gradient(180deg, var(--head-1), var(--head-2));
+  color: var(--head-text);
+  border-bottom: 1px solid var(--head-line);
+  /* Sudut atas selalu membulat mengikuti .panel — penting saat panel
+     overflow:visible di mobile (kalau tidak, sudutnya jadi lancip). */
+  border-top-left-radius: var(--r);
+  border-top-right-radius: var(--r);
+  font-size: 15px; font-weight: 800; letter-spacing: 2px;
+  flex: 0 0 auto;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.panel-head::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 3px;
+  background: var(--panel-accent-line);
+}
+.panel-head .panel-title {
+  grid-column: 2;
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.panel-body {
+  flex: 1 1 auto; min-height: 0;
+  padding: 12px 16px 12px;
+  display: flex; flex-direction: column; gap: 8px;
+  overflow: auto;
+}
+/* Konten utama panel: flex 1 agar tombol (.panel-action) tetap di bawah */
+.panel-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 20px 8px 14px;
+}
+.panel-action {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+/* ============================================================
+   Panel Lampu
+   ============================================================ */
+.lamp-icon {
+  width: clamp(180px, 24vh, 240px);
+  height: clamp(180px, 24vh, 240px);
+  transition: color 0.4s ease, filter 0.4s ease;
+}
+.lamp-icon .lamp-rays { opacity: 0; transition: opacity 0.4s ease; }
+.lamp-icon .lamp-glass {
+  fill: var(--chip-bg-solid);
+  stroke: var(--muted);
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+.lamp-icon .lamp-filament {
+  fill: none; stroke: var(--muted);
+  stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+  transition: stroke 0.4s ease;
+}
+.lamp-icon .lamp-base {
+  fill: none; stroke: var(--muted);
+  stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+  transition: stroke 0.4s ease;
+}
+.lamp-icon.on { color: var(--orange); filter: drop-shadow(0 0 26px rgba(238, 138, 58, 0.75)); }
+.lamp-icon.on .lamp-rays { opacity: 1; animation: lampGlow 2.2s ease-in-out infinite; }
+.lamp-icon.on .lamp-glass { fill: #FFE9A8; stroke: #F5A623; }
+.lamp-icon.on .lamp-filament { stroke: #FFD27A; }
+.lamp-icon.on .lamp-base { stroke: #C77908; }
+@keyframes lampGlow {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+/* ============================================================
+   Panel Pompa
+   ============================================================ */
+.pump-wrap {
+  position: relative;
+  width: min(96%, 460px);
+  max-width: 460px;
+  aspect-ratio: 1.5; display: block;
+}
+.pump-body { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* FIX A1: kotak impeller dipaksa persegi (aspect-ratio 1/1 + height auto +
+   object-fit contain), posisi & skala sesuai hasil ukur gambar body
+   (recess di 73.4%,56.1% dengan diameter 20% lebar body). */
+.pump-impeller {
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  left: 73.4%;
+  top: 56.1%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  object-fit: contain;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ============================================================
+   Panel AC
+   ============================================================ */
+/* Satu permukaan kontrol AC (control surface) yang terintegrasi.
+   Kedua modul (SUHU & KIPAS) berada di dalam wadah yang sama. */
+.ac-controls {
+  display: flex; gap: 0; width: 100%;
+  justify-content: center; align-items: stretch;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-line);
+  border-radius: 18px;
+  padding: 14px 12px;
+  overflow: visible;   /* jangan pernah memotong angka/tombol */
+}
+.ac-ctrl-group {
+  flex: 1 1 0; min-width: 0; max-width: none;
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: center; justify-content: flex-start;
+  padding: 8px 18px;
+}
+.ac-ctrl-group + .ac-ctrl-group {
+  border-left: 1px solid var(--chip-line);
+}
+.ac-ctrl-title {
+  font-size: 13px; font-weight: 800; letter-spacing: 2.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 7px;
+  padding: 0;
+  min-height: 20px;
+}
+.ac-ctrl-title .icon { width: 19px; height: 19px; }
+
+/* ---- Kontrol suhu ---- */
+.ac-temp-display {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+}
+.ac-thermo {
+  width: 46px; height: 46px;
+  color: var(--ac-temp-color, var(--blue));
+  transition: color 0.4s ease, filter 0.4s ease;
+}
+.ac-thermo .thermo-tube { fill: none; stroke: currentColor; stroke-width: 2; }
+.ac-thermo .thermo-bulb { fill: currentColor; }
+.ac-temp-value {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: clamp(56px, 5.2vw, 68px); font-weight: 800; line-height: 1;
+  color: var(--ac-temp-color, var(--num));
+  transition: color 0.4s ease;
+}
+.ac-temp-unit {
+  font-size: 22px; font-weight: 600; color: var(--muted);
+  margin-left: 2px;
+}
+.ac-temp-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 2px; }
+.ac-temp-btn {
+  width: 56px; height: 56px; border-radius: 16px;
+  border: 1px solid var(--chip-line); background: var(--chip-bg-solid);
+  color: var(--chip-text); font-size: 30px; font-weight: 700; line-height: 1;
+  cursor: pointer; user-select: none; display: grid; place-items: center;
+  box-shadow: 0 1px 2px rgba(22, 34, 60, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.12s ease;
+}
+.ac-temp-btn:hover {
+  background: var(--hover); border-color: var(--blue);
+  color: var(--blue); box-shadow: 0 2px 8px rgba(30, 80, 216, 0.15);
+}
+.ac-temp-btn:active { transform: scale(0.93); }
+.ac-temp-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Kontrol kipas ---- */
+.ac-fan-btns {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px; width: 100%; max-width: 280px;
+}
+.ac-fan-btn {
+  min-height: 48px; padding: 8px 6px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.4px;
+  white-space: nowrap; overflow: hidden;
+  border: 1px solid var(--chip-line); background: var(--chip-bg-solid);
+  color: var(--chip-text); cursor: pointer; user-select: none;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.12s ease;
+}
+.ac-fan-btn .icon { width: 14px; height: 14px; flex: 0 0 auto; }
+.ac-fan-btn:hover:not(.active) { border-color: var(--blue); color: var(--blue); }
+.ac-fan-btn:active { transform: scale(0.96); }
+.ac-fan-btn.active {
+  background: var(--blue); color: #fff; border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue), 0 3px 10px rgba(30, 80, 216, 0.35);
+}
+.ac-fan-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* ---- Tombol power AC (scoped ke panel AC, tidak menyentuh panel lain) ---- */
+#panel-ac .panel-action {
+  padding-top: 14px;
+}
+#panel-ac .btn-big {
+  background: var(--sw-1);
+  background-image: none;
+}
+#panel-ac .btn-big.on-ac {
+  background: linear-gradient(180deg, var(--orange), var(--orange-d));
+  box-shadow: 0 0 16px rgba(238, 138, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================
+   Tombol besar (touch-friendly)
+   ============================================================ */
+.btn-big {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 60px; max-height: 76px;
+  border: none; border-radius: 14px;
+  font-family: inherit; font-size: 21px; font-weight: 700; letter-spacing: 1.5px;
+  cursor: pointer; user-select: none; touch-action: manipulation;
+  background: linear-gradient(180deg, var(--sw-1), var(--sw-2));
+  color: var(--sw-fg);
+  box-shadow: inset 0 1px 0 var(--sw-line), 0 3px 6px rgba(22, 34, 60, 0.08);
+  transition: all 0.3s ease;
+  position: relative; overflow: hidden;
+}
+.btn-big:hover:not(.disabled) { transform: translateY(-2px); box-shadow: inset 0 1px 0 var(--sw-line), 0 8px 16px rgba(22, 34, 60, 0.14); }
+.btn-big:active:not(.disabled) { transform: translateY(0) scale(0.97); }
+.btn-big .icon { width: 24px; height: 24px; flex: 0 0 auto; }
+.btn-big.on-lamp { background: linear-gradient(180deg, var(--orange), var(--orange-d)); color: #FFF8E7; box-shadow: 0 0 16px rgba(238, 138, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn-big.on-pump { background: linear-gradient(180deg, var(--orange), var(--orange-d)); color: #FFF8E7; box-shadow: 0 0 16px rgba(238, 138, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn-big.on-door { background: linear-gradient(180deg, var(--orange), var(--orange-d)); color: #FFF8E7; box-shadow: 0 0 16px rgba(238, 138, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn-big.on-ac { background: linear-gradient(180deg, var(--orange), var(--orange-d)); color: #FFF8E7; box-shadow: 0 0 16px rgba(238, 138, 58, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
+.btn-big.disabled { cursor: not-allowed; }
+
+/* Feedback offline untuk tombol UNLOCK: kedip merah singkat saat perintah
+   tidak bisa dikirim (koneksi mati) — tombol TETAP terlihat normal,
+   tidak ada opacity/saturasi yang membuat pudar. */
+#btn-door.offline-flash {
+  background: linear-gradient(180deg, var(--red), var(--red-d)) !important;
+  color: #FFF !important;
+  box-shadow: 0 0 16px rgba(217, 45, 62, 0.5) !important;
+}
+
+/* Icon gembok tombol UNLOCK — CROSSFADE antara 2 gambar statis (Opsi 1):
+   .shackle-closed = shackle U simetris (kondisi terkunci)
+   .shackle-open   = shackle terbuka yang DIGAMBAR MANUAL (kaki kiri tetap
+   di badan, busur + kaki kanan terangkat & bergeser ke kanan atas)
+   Rotasi murni dari satu pivot terbukti selalu dominan vertikal untuk
+   bentuk arc ini (lihat prompt-koreksi-animasi-shackle-v2.md) — karena
+   itu bentuk "terbuka" digambar langsung, bukan dihitung dari rotasi. */
+#btn-door .shackle-closed,
+#btn-door .shackle-open {
+  transform-box: view-box;
+  transition: opacity 0.35s cubic-bezier(0.34, 1.3, 0.64, 1),
+              transform 0.35s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+#btn-door .shackle-closed { opacity: 1; transform: translateY(0); }
+#btn-door .shackle-open   { opacity: 0; transform: translate(1.5px, 0.8px); }
+
+#btn-door.door-open .shackle-closed { opacity: 0; transform: translateY(-0.8px); }
+#btn-door.door-open .shackle-open   { opacity: 1; transform: translate(0, 0); }
+.btn-big .ripple {
+  position: absolute; border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 160px; height: 160px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: rippleAnim 0.55s ease-out;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* ============================================================
+   Suhu & Kelembaban Aktual (DHT22) di panel AC —
+   kotak 2 kolom read-only, senada persis dengan .ac-controls
+   (SUHU/FAN SPEED) yang berada tepat di bawahnya
+   ============================================================ */
+.ac-actual-row {
+  padding: 20px 16px;
+}
+.ac-actual-title .icon { color: var(--blue); }
+.ac-actual-value-wrap {
+  display: flex; align-items: center; justify-content: center;
+  gap: 4px;
+  min-height: 56px;    /* cukup untuk 1 baris angka besar; 128px lama membuat
+                          angka terpotong oleh overflow:hidden .ac-controls */
+}
+.ac-actual-value {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: clamp(56px, 5.2vw, 68px); font-weight: 800; line-height: 1;
+  color: var(--num);
+  white-space: nowrap;   /* angka jangan pernah pecah baris */
+}
+.ac-actual-unit {
+  font-size: 22px; font-weight: 600; color: var(--muted);
+}
+/* Saat automation lock meredupkan .ac-controls, baris read-only ini
+   (bukan kontrol) tetap harus tampil jelas — hanya baca, tak terkunci. */
+.automation-locked .ac-actual-row {
+  opacity: 1; filter: none; pointer-events: auto;
+}
+
+/* ============================================================
+   Badge mode otomatis (panel AC)
+   ============================================================ */
+.automation-badge {
+  width: 100%;
+  text-align: center;
+  font-size: 12px; font-weight: 800; letter-spacing: 2px;
+  color: #fff;
+  background: var(--green-d);
+  border-radius: 10px;
+  padding: 5px 10px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* ============================================================
+   Automation Lock (kontrol manual terkunci saat rule aktif)
+   ============================================================ */
+.automation-locked .ac-controls,
+.automation-locked #btn-ac {
+  pointer-events: none;
+  opacity: 0.45;
+  filter: grayscale(0.3);
+}
+.automation-locked #btn-ac {
+  cursor: not-allowed;
+}
+#btn-lamp.automation-locked-btn,
+#btn-pump.automation-locked-btn {
+  pointer-events: none;
+  opacity: 0.45;
+  filter: grayscale(0.3);
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   SPA Views (halaman penuh: menu, logging, automation)
+   ============================================================ */
+.view { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.view[hidden] { display: none; }
+
+/* ---- Halaman Menu (industrial tile layout) ---- */
+.menu-content {
+  flex: 1 1 auto;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 18px;
+  padding: 10px 20px 16px;
+}
+.menu-choice {
+  display: flex; align-items: center;
+  gap: 18px;
+  width: min(580px, 94%);
+  min-height: 80px;
+  padding: 16px 22px;
+  border: 1px solid var(--chip-line);
+  border-radius: var(--r);
+  background: var(--panel);
+  color: var(--ink);
+  font-family: inherit;
+  cursor: pointer; user-select: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  text-align: left;
+}
+.menu-choice:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-h);
+  border-color: var(--blue);
+  background: var(--hover);
+}
+.menu-choice:active { transform: translateY(0) scale(0.98); }
+
+.menu-choice-icon {
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--tint-blue);
+  color: var(--blue);
+}
+.menu-choice-icon .icon { width: 26px; height: 26px; }
+
+.menu-choice-text {
+  flex: 1 1 auto;
+  display: flex; flex-direction: column;
+  min-width: 0;
+}
+.menu-choice-title {
+  font-size: 20px; font-weight: 800; letter-spacing: 2px;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.menu-choice-desc {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.menu-choice-arrow {
+  flex: 0 0 auto;
+  width: 28px; height: 28px;
+  color: var(--chip-text);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.menu-choice:hover .menu-choice-arrow {
+  color: var(--blue);
+  transform: translateX(4px);
+}
+
+/* ---- Tombol Back (industrial: ikon dalam kotak tinted + teks) ---- */
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px 6px 6px;
+  border: 1px solid var(--chip-line);
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-family: inherit; font-size: 14px; font-weight: 800; letter-spacing: 1.5px;
+  border-radius: 12px;
+  cursor: pointer; user-select: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+}
+.btn-back .btn-back-icon {
+  flex: 0 0 auto;
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: var(--tint-blue);
+  color: var(--blue);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-back .btn-back-icon .icon {
+  width: 18px; height: 18px;
+  transition: transform 0.2s ease;
+}
+.btn-back:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--hover);
+  box-shadow: 0 2px 10px rgba(30, 80, 216, 0.15);
+}
+.btn-back:hover .btn-back-icon {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-back:hover .btn-back-icon .icon { transform: translateX(-2px); }
+.btn-back:active { transform: scale(0.96); }
+/* Varian tombol back di footer menu: full-width, lebih kokoh (industrial) */
+.btn-back-block {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  width: min(580px, 94%);
+  min-height: 56px;
+  align-self: center;
+  font-size: 16px; letter-spacing: 2px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-line);
+}
+.btn-back-block:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--tint-red);
+}
+
+/* ---- Footer halaman menu (tempat tombol back) ---- */
+.menu-footer {
+  flex: 0 0 auto;
+  display: flex; justify-content: center;
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---- Header halaman (back + judul) ---- */
+.view-header {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: 6px 2px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.view-header h2 {
+  font-size: 24px; font-weight: 800; letter-spacing: 3px;
+  color: var(--title-1);
+}
+.view-header-sub {
+  font-size: 13px; font-weight: 700; letter-spacing: 3px;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+/* ---- Halaman Logging ---- */
+.logging-note {
+  font-size: 12.5px; color: var(--muted);
+  padding: 0 2px 10px;
+}
+.logging-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 10px 14px;
+}
+.log-item {
+  font-family: var(--mono);
+  font-size: 13.5px; line-height: 1.5;
+  color: var(--ink);
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--border);
+  word-break: break-word;
+}
+.log-item:last-child { border-bottom: none; }
+
+/* ---- Halaman Automation Rule (industrial panel layout) ---- */
+.automation-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: start;
+  gap: 18px;
+  padding: 4px 2px 10px;
+}
+.auto-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.auto-panel-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.auto-panel-title {
+  display: flex; align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.auto-panel-icon {
+  flex: 0 0 auto;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  background: var(--tint-blue);
+  color: var(--blue);
+}
+.auto-panel-icon .icon { width: 22px; height: 22px; }
+.auto-panel-name {
+  font-size: 16px; font-weight: 800; letter-spacing: 2px;
+  color: var(--title-1);
+}
+/* Badge status otomasi (AKTIF / NONAKTIF) */
+.auto-panel-status {
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--chip-line);
+  color: var(--muted);
+  background: var(--chip-bg);
+}
+.auto-panel-status.badge-on {
+  color: #fff;
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 12px rgba(15, 163, 122, 0.35);
+}
+.auto-panel-status.badge-off {
+  color: var(--muted);
+  background: var(--chip-bg);
+  border-color: var(--chip-line);
+}
+/* Tingkatkan kontras badge NONAKTIF di tema gelap */
+html[data-theme="dark"] .auto-panel-status.badge-off {
+  color: #b0bcd4;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Baris status live perangkat */
+.auto-live {
+  display: flex; align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-line);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--chip-text);
+}
+.auto-live-item { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.auto-live-item b {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  color: var(--num);
+  font-weight: 800;
+}
+.auto-live-item b.live-on { color: var(--green); }
+
+/* Grup parameter (A/C ON, A/C OFF, jam) */
+.auto-params {
+  display: flex; flex-direction: column;
+  gap: 10px;
+}
+.auto-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.auto-label {
+  font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
+  color: var(--chip-text);
+}
+.auto-input-wrap {
+  display: inline-flex; align-items: center;
+  gap: 6px;
+  max-width: 100%; min-width: 0;
+}
+.auto-input {
+  width: 130px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--chip-line);
+  border-radius: 10px;
+  background: var(--chip-bg-solid);
+  color: var(--num);
+  font-family: var(--mono); font-size: 17px; font-weight: 700;
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.auto-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--tint-blue);
+}
+.auto-unit {
+  font-size: 14px; font-weight: 700;
+  color: var(--muted);
+  min-width: 26px;
+}
+.auto-hint {
+  font-size: 12px; color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Aksi panel (tombol simpan) */
+.auto-actions {
+  display: flex; justify-content: flex-end;
+  border-top: 1px dashed var(--border);
+  margin-top: auto;
+  padding-top: 12px;
+}
+.btn-save {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+  min-width: 150px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--blue), var(--blue-d));
+  color: #fff;
+  font-family: inherit; font-size: 15px; font-weight: 800; letter-spacing: 2px;
+  cursor: pointer; user-select: none;
+  box-shadow: 0 3px 10px rgba(30, 80, 216, 0.3);
+  transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-save .icon { width: 18px; height: 18px; }
+.btn-save:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30, 80, 216, 0.4); }
+.btn-save:active { transform: scale(0.96); }
+
+/* Status simpan (feedback) - merentang penuh di bawah grid */
+.auto-status {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+  color: var(--green-d);
+  padding: 8px;
+}
+.auto-status.error { color: var(--red); }
+
+/* ---- Toggle switch ---- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px; height: 28px;
+  flex: 0 0 auto;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch .slider {
+  position: absolute; inset: 0;
+  cursor: pointer;
+  background: var(--sw-2);
+  border-radius: 28px;
+  transition: background 0.25s ease;
+}
+.switch .slider::before {
+  content: "";
+  position: absolute;
+  width: 22px; height: 22px;
+  left: 3px; top: 3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease;
+}
+.switch input:checked + .slider { background: var(--green); }
+.switch input:checked + .slider::before { transform: translateX(24px); }
+
+/* ============================================================
+   Keypad Modal (touchscreen input tanpa keyboard)
+   ============================================================ */
+.keypad-overlay {
+  position: fixed; z-index: 9999;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: kpFadeIn 0.15s ease;
+}
+@keyframes kpFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.keypad-overlay[hidden] { display: none; }
+
+.keypad-modal {
+  width: min(400px, 94vw);
+  max-height: 92vh;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  padding: 20px 20px 16px;
+  display: flex; flex-direction: column; gap: 14px;
+  animation: kpSlideIn 0.18s ease;
+}
+@keyframes kpSlideIn { from { transform: scale(0.94) translateY(16px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+
+.keypad-header {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.keypad-title {
+  font-size: 18px; font-weight: 800; letter-spacing: 2px;
+  color: var(--title-1);
+}
+.keypad-close {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line);
+  border-radius: 12px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.keypad-close:hover { border-color: var(--red); color: var(--red); background: var(--tint-red); }
+.keypad-close:active { transform: scale(0.94); }
+.keypad-close .icon { width: 20px; height: 20px; }
+
+/* Display area */
+.keypad-display {
+  display: flex; align-items: center; justify-content: center;
+  gap: 4px;
+  min-height: 64px;
+  padding: 12px 18px;
+  background: var(--chip-bg);
+  border: 2px solid var(--chip-line);
+  border-radius: 14px;
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: 36px; font-weight: 800;
+  color: var(--num);
+  transition: border-color 0.2s ease;
+}
+.keypad-display .kp-digit { display: inline-block; text-align: center; min-width: 28px; letter-spacing: 2px; }
+.keypad-display .kp-digit.dim { color: var(--muted); opacity: 0.35; }
+.keypad-display .kp-sep { color: var(--muted); font-weight: 600; margin: 0 2px; }
+.keypad-display.state-error { border-color: var(--red); }
+
+.keypad-error {
+  font-size: 13px; font-weight: 700; text-align: center;
+  color: var(--red);
+  padding: 4px 0;
+}
+
+/* Grid tombol angka */
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.keypad-key {
+  min-height: 62px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line);
+  border-radius: 14px;
+  background: var(--chip-bg-solid);
+  color: var(--num);
+  font-family: inherit; font-size: 26px; font-weight: 800;
+  cursor: pointer; user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.keypad-key:hover { background: var(--hover); border-color: var(--blue); color: var(--blue); }
+.keypad-key:active { transform: scale(0.94); }
+.keypad-key .icon { width: 24px; height: 24px; }
+.keypad-fn { font-size: 20px; color: var(--chip-text); }
+.keypad-fn:hover { color: var(--red); border-color: var(--red); background: var(--tint-red); }
+
+/* Baris tombol aksi (BATAL / OK) */
+.keypad-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 2px;
+}
+.keypad-btn {
+  min-height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border: none;
+  border-radius: 14px;
+  font-family: inherit; font-size: 18px; font-weight: 800; letter-spacing: 2px;
+  cursor: pointer; user-select: none;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.keypad-btn:active { transform: scale(0.96); }
+.keypad-cancel {
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  border: 1px solid var(--chip-line);
+}
+.keypad-cancel:hover { border-color: var(--red); color: var(--red); background: var(--tint-red); }
+.keypad-ok {
+  background: linear-gradient(180deg, var(--blue), var(--blue-d));
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(30, 80, 216, 0.3);
+}
+.keypad-ok:hover { box-shadow: 0 6px 18px rgba(30, 80, 216, 0.4); filter: brightness(1.08); }
+
+/* ---- Tombol edit (pensil) di samping input readonly ---- */
+.auto-edit {
+  flex: 0 0 auto;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line);
+  border-radius: 12px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.auto-edit .icon { width: 18px; height: 18px; }
+.auto-edit:hover { border-color: var(--blue); color: var(--blue); background: var(--tint-blue); }
+.auto-edit:active { transform: scale(0.94); }
+
+/* Input readonly dapat pointer */
+.auto-input[readonly] { cursor: pointer; }
+
+/* ============================================================
+   FITUR BARU — GRAFIK PZEM, RUNNING HOURS, PENGATURAN, AUTH,
+   CALENDAR, LOG WARNING, UNDUH CSV
+   (base styles; media query tetap konsolidasi di akhir file)
+   ============================================================ */
+
+/* ---- Toolbar Unduh CSV (Logging & Grafik) — tombol di tengah ---- */
+.logging-toolbar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+  /* Spasi ke daftar log di bawahnya (pengganti note yang dihapus) */
+  margin-bottom: 12px;
+}
+.btn-csv { min-height: 48px; flex: 0 0 auto; }
+.btn-csv:disabled { opacity: 0.6; pointer-events: none; }
+
+/* ---- Log warning (highlight merah, field `level` dari backend) ---- */
+.log-item { padding: 9px 14px; border-radius: 10px; font-size: 14px; }
+.logging-list {
+  /* Gutter simetris agar isi daftar sejajar center dengan tombol
+     UNDUH CSV di atasnya meski scrollbar aktif */
+  scrollbar-gutter: stable both-edges;
+}
+.log-item-warning {
+  color: var(--red);
+  background: var(--tint-red);
+  border: 1px solid rgba(217, 45, 62, 0.35);
+  font-weight: 700;
+}
+
+/* ---- Halaman Grafik PZEM ---- */
+.grafik-wrap {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 14px;
+  padding-bottom: 14px;
+  /* Gutter kiri-kanan simetris: scrollbar tak membuat konten tampak
+     geser kiri — tombol UNDUH CSV & panel tetap center optik */
+  scrollbar-gutter: stable both-edges;
+}
+.grafik-toolbar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.grafik-note { font-size: 13px; color: var(--muted); }
+.grafik-tiles { display: flex; }
+.grafik-tiles .ac-ctrl-group { flex: 1 1 0; }
+.grafik-now { font-size: 13px; color: var(--muted); font-weight: 700; }
+.grafik-now b { color: var(--num); }
+.grafik-chart-panel { padding: 14px 16px 10px; }
+.grafik-canvas-wrap { width: 100%; }
+.grafik-canvas-wrap canvas { display: block; width: 100%; }
+
+/* ---- Running Hours: panel terstruktur (2 kolom + bar proporsi) ---- */
+.rh-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--chip-line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--chip-bg);
+}
+.rh-cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px;
+  padding: 14px 10px;
+  min-width: 0;                /* cegah zwangs-overflow di kolom sempit */
+  max-width: 100%;
+}
+.rh-cell + .rh-cell { border-left: 1px solid var(--chip-line); }
+.rh-cell-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase;
+}
+.rh-cell-set .auto-input-wrap { justify-content: center; }
+.rh-cell-set .auto-input { width: 120px; text-align: center; font-weight: 800; }
+.rh-remain-value {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: clamp(26px, 3vw, 40px); font-weight: 800; line-height: 1;
+  color: var(--num);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.rh-remain-value.rh-expired { color: var(--red); }
+.rh-remain-value.rh-low { color: var(--orange); }
+.rh-remain-unit {
+  font-size: 12px; font-weight: 800; letter-spacing: 2px;
+  color: var(--muted);
+}
+.rh-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-line);
+  overflow: hidden;
+  margin-top: 12px;
+}
+.rh-bar-fill {
+  display: block; height: 100%; width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green), var(--green-d));
+  transition: width 0.5s ease, background 0.3s ease;
+}
+.rh-bar-fill.rh-low {
+  background: linear-gradient(90deg, var(--orange), var(--orange-d));
+}
+.rh-bar-fill.rh-expired {
+  background: linear-gradient(90deg, var(--red), var(--red-d));
+}
+.badge-warn {
+  background: var(--tint-red) !important;
+  color: var(--red) !important;
+  border-color: rgba(217, 45, 62, 0.4) !important;
+  box-shadow: none !important;
+}
+
+/* Halaman Running Hours: semua panel device setara (grid simetris — tidak ada
+   yang dipaksa full-width, sehingga tidak ada panel "nyangkut" sendirian),
+   tombol SIMPAN di bawahnya tetap selebar penuh & center */
+#rh-panel-lampu .auto-actions,
+#rh-panel-pompa .auto-actions,
+#rh-panel-ac .auto-actions,
+#rh-panel-dorlock .auto-actions { justify-content: center; }
+.rh-save-row {
+  grid-column: 1 / -1;
+  border-top: none;
+  padding-top: 0;
+  justify-content: center;
+}
+.rh-save-row .btn-save { min-width: 240px; }
+
+/* Dark theme: bar & nilai tetap kontras */
+html[data-theme="dark"] .rh-body { background: var(--chip-bg); }
+html[data-theme="dark"] .rh-remain-value { color: #F4F8FF; }
+html[data-theme="dark"] .rh-remain-value.rh-expired { color: #FF8C97; }
+html[data-theme="dark"] .rh-remain-value.rh-low { color: #FFB067; }
+html[data-theme="dark"] .badge-warn {
+  background: rgba(217, 45, 62, 0.22) !important;
+  color: #FF8C97 !important;
+}
+
+/* ---- Pengaturan (Gear) ---- */
+.tg-input {
+  flex: 1 1 auto; width: auto; min-width: 0;
+  background: var(--chip-bg-solid);
+  border: 1px solid var(--chip-line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-family: inherit; font-size: 15px; color: var(--num);
+}
+.tg-input:focus { outline: none; border-color: var(--blue); }
+.tg-input::placeholder { color: var(--muted); opacity: 0.7; }
+
+/* Halaman Pengaturan: field Bot Token & Chat/Group ID berukuran SAMA —
+   label diberi lebar tetap, wrapper input melebar penuh sisanya */
+#tg-panel .auto-label { flex: 0 0 150px; }
+
+/* Form Ganti Password: label lebar tetap agar ketiga kolom input sejajar
+   lurus (kiri & kanan), pola sama dengan panel Telegram */
+#pwd-form .auto-row { flex-wrap: nowrap; }
+#pwd-form .auto-label { flex: 0 0 170px; text-align: left; }
+#pwd-form .auto-input-wrap { flex: 1 1 auto; }
+#pwd-form .tg-input { width: 100%; }
+#tg-panel .auto-input-wrap { flex: 1 1 auto; }
+
+/* ---- Auth overlay (PIN): display titik • samar ---- */
+.auth-display { letter-spacing: 6px; }
+
+/* ---- Calendar overlay ---- */
+.calendar-modal { width: min(430px, 94vw); }
+.cal-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.cal-month-label {
+  font-size: 16px; font-weight: 800; letter-spacing: 1px; color: var(--title-1);
+}
+.cal-nav-btn {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line); border-radius: 12px;
+  background: var(--chip-bg); color: var(--chip-text);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.cal-nav-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--tint-blue); }
+.cal-nav-btn:active { transform: scale(0.94); }
+.cal-nav-btn .icon { width: 20px; height: 20px; }
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.cal-dow {
+  text-align: center; font-size: 11px; font-weight: 800;
+  letter-spacing: 1px; color: var(--muted); padding: 4px 0;
+}
+.cal-day {
+  min-height: 46px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line);
+  border-radius: 10px;
+  background: var(--chip-bg-solid);
+  color: var(--num);
+  font-family: inherit; font-size: 15px; font-weight: 700;
+  cursor: pointer; user-select: none;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+.cal-day:hover { border-color: var(--blue); color: var(--blue); }
+.cal-day:active { transform: scale(0.94); }
+.cal-day.cal-empty { visibility: hidden; pointer-events: none; }
+.cal-day.cal-from, .cal-day.cal-to {
+  background: var(--blue); border-color: var(--blue); color: #fff;
+  box-shadow: 0 2px 10px rgba(30, 80, 216, 0.35);
+}
+.cal-day.cal-inrange {
+  background: var(--tint-blue); border-color: rgba(30, 80, 216, 0.35);
+  color: var(--blue-d);
+}
+.cal-day.cal-today { border-style: dashed; border-color: var(--orange); }
+.cal-range-info {
+  text-align: center; font-size: 13px; font-weight: 700;
+  color: var(--muted); min-height: 18px;
+}
+
+/* ---- Dark theme: pastikan elemen baru tetap kontras ---- */
+html[data-theme="dark"] .tg-input {
+  background: var(--chip-bg);
+  color: var(--num);
+}
+html[data-theme="dark"] .cal-day {
+  background: var(--chip-bg);
+}
+html[data-theme="dark"] .cal-day.cal-inrange {
+  background: var(--tint-blue);
+  color: #CFE0FF;
+}
+html[data-theme="dark"] .badge-warn {
+  background: rgba(217, 45, 62, 0.22) !important;
+  color: #FF8C97 !important;
+}
+
+/* ============================================================
+   ON-SCREEN KEYBOARD (QWERTY + numpad) untuk input teks halaman
+   Pengaturan — kiosk touchscreen tanpa keyboard/mouse fisik
+   ============================================================ */
+.osk-modal { width: min(720px, 96vw); }
+.osk-preview {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  min-height: 52px;
+  padding: 8px 16px;
+  background: var(--chip-bg);
+  border: 2px solid var(--chip-line);
+  border-radius: 12px;
+}
+.osk-preview.state-error { border-color: var(--red); }
+.osk-preview-text {
+  flex: 1 1 auto; min-width: 0;
+  font-family: var(--mono); font-size: 16px; font-weight: 700;
+  color: var(--num);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.osk-preview-label {
+  flex: 0 0 auto;
+  font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
+  color: var(--muted); text-transform: uppercase;
+}
+.osk-error {
+  font-size: 13px; font-weight: 700; text-align: center;
+  color: var(--red); padding: 2px 0;
+}
+.osk-rows { display: flex; flex-direction: column; gap: 8px; }
+.osk-row { display: flex; justify-content: center; gap: 6px; }
+.osk-key {
+  flex: 1 1 0; min-width: 0; min-height: 48px;
+  display: grid; place-items: center;
+  border: 1px solid var(--chip-line);
+  border-radius: 10px;
+  background: var(--chip-bg-solid);
+  color: var(--num);
+  font-family: var(--mono); font-size: 15px; font-weight: 700;
+  cursor: pointer; user-select: none;
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease, transform 0.08s ease;
+  padding: 0 2px;
+}
+.osk-key:hover { background: var(--hover); border-color: var(--blue); color: var(--blue); }
+.osk-key:active { transform: scale(0.93); }
+.osk-key.osk-active {
+  background: var(--blue); border-color: var(--blue); color: #fff;
+}
+.osk-key.osk-fn {
+  flex: 0 0 auto; min-width: 64px;
+  font-size: 12px; font-weight: 800; letter-spacing: 1px;
+  color: var(--chip-text); font-family: inherit;
+}
+.osk-key.osk-fn:hover { color: var(--red); border-color: var(--red); background: var(--tint-red); }
+.osk-key.osk-space { flex: 3 1 0; }
+.osk-key .icon { width: 20px; height: 20px; }
+
+/* Varian PIN (numpad 0-9, nilai disamarkan) */
+.osk-modal.osk-pin { width: min(420px, 94vw); }
+.osk-modal.osk-pin .osk-preview-text { letter-spacing: 8px; font-size: 24px; }
+.osk-modal.osk-pin .osk-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+/* ============================================================
+   DORLOCK (uji coba v3) — power-to-lock: arus ON = TERKUNCI
+   Visual: pintu kayu full-bleed potrait (dorlock-door-body.png)
+   + plat dorlock (dorlock-plate.png) + GAGANG LEVER terpisah
+   (dorlock-handle.png) yang BERPUTAR di pivot kiri:
+     TERKUNCI -> rotate(0deg)   (gagang horizontal normal)
+     TERBUKA  -> rotate(38deg)  (gagang ditekan turun)
+   LED strip pada window plat (hijau terkunci / merah terbuka).
+   ============================================================ */
+.dorlock-body { display: flex; flex-direction: column; }
+.dorlock-visual {
+  display: flex; align-items: center; justify-content: center;
+  flex: 1 1 auto; min-height: 150px;
+  padding: 10px 8px 4px;
+}
+
+/* Proporsi mengikuti aset pintu potrait 700x1400 (1:2).
+   BERBASIS LEBAR (width-driven): di semua ukuran layar (desktop & HP)
+   tinggi dihitung dari lebar kolom panel via aspect-ratio, sehingga gambar
+   TIDAK BISA collapse (bug v38: height:min(100%,300px) = 0 saat parent
+   tidak punya tinggi eksplisit di layout mobile). */
+.dorlock-wrap {
+  position: relative;
+  width: min(100%, 150px);
+  aspect-ratio: 1 / 2;
+  margin: 0 auto;
+  display: block;
+}
+
+/* PINTU: layer dasar, full-bleed */
+.dorlock-door-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  border-radius: 10px;
+  filter: drop-shadow(0 6px 14px rgba(22, 34, 60, 0.30));
+}
+html[data-theme="dark"] .dorlock-door-img {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.65)) brightness(0.85);
+}
+
+/* PLAT DORLOCK (base, tanpa gagang): KANVAS SAMA dengan pintu
+   (700x1400) -> ditumpuk inset:0 penuh, koordinat otomatis match */
+.dorlock-plate-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; display: block;
+  pointer-events: none;
+}
+
+/* GAGANG LEVER (dorlock-handle-only.png): KANVAS SAMA (700x1400),
+   ditumpuk inset:0 penuh — metode kanvas identik (terbukti di v4).
+   Pivot TERUKUR v5: (515, 780) — tengah vertikal plat
+   -> transform-origin 73.57% 55.71%.
+   ARAH: arm menjulur KIRI -> rotate positif = gagang NAIK;
+   maka TERBUKA memakai rotate(-38deg) agar gagang TURUN saat
+   BUKA PINTU, dan kembali horizontal (0deg) saat KUNCI PINTU. */
+.dorlock-lever-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; display: block;
+  pointer-events: none;
+  transform-origin: 73.57% 55.71%;
+  will-change: transform;
+  filter: drop-shadow(0 3px 6px rgba(22, 34, 60, 0.28));
+  transition: transform 0.45s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+.dorlock-lever-img.dorlock-open   { transform: rotate(-38deg); } /* gagang turun saat dibuka  */
+.dorlock-lever-img.dorlock-locked { transform: rotate(0deg); }   /* normal horizontal saat dikunci */
+html[data-theme="dark"] .dorlock-lever-img {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.65)) brightness(0.9);
+}
+
+/* LED strip pada window plat v5 — window digambar di x 487..613,
+   y 672..714 dari kanvas 700x1400 -> left 69.6%, top 48%, w 18% */
+.dorlock-led-img {
+  position: absolute;
+  width: 18%;
+  height: auto;
+  left: 69.6%;
+  top: 48%;
+  object-fit: contain;
+  pointer-events: none;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Badge panel-head (sama gaya badge automation) */
+.panel-head .auto-panel-status {
+  margin-left: auto;
+  font-size: 11px; font-weight: 800; letter-spacing: 1px;
+  padding: 4px 12px; border-radius: 999px;
+  border: 1px solid var(--chip-line);
+  background: var(--chip-bg); color: var(--chip-text);
+}
+.panel-head .auto-panel-status.badge-on {
+  background: var(--tint-green); color: var(--green-d);
+  border-color: rgba(15, 163, 122, 0.4);
+}
+.panel-head .auto-panel-status.badge-warn {
+  background: var(--tint-red); color: var(--red);
+  border-color: rgba(217, 45, 62, 0.4);
+}
+
+/* Dashboard: 4 panel -> grid 2x2 pada lebar penuh */
+@media (min-width: 1200px) {
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .grid-3 .panel:last-child { grid-column: auto; }
+  /* Running Hours & Automation: layar lebar -> 4 panel device dalam
+     SATU baris (konsisten dengan pola dashboard .grid-3 di kiosk) */
+  .automation-wrap { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+}
+
+/* ---- Dark theme dorlock ---- */
+html[data-theme="dark"] .dorlock-lever rect { fill: rgba(255,255,255,0.06); }
+html[data-theme="dark"] .dorlock-icon.dorlock-locked .dorlock-lever rect { stroke: #6E97FF; }
+html[data-theme="dark"] .dorlock-icon.dorlock-open .dorlock-lever rect,
+html[data-theme="dark"] .dorlock-icon.dorlock-open .dorlock-plate { stroke: #FF8C97; }
+
+/* ============================================================
+   LAPTOP KECIL / KIOSK 1366x768 & SEMACAMNYA (tinggi 700-830px)
+   Tinggi viewport di rentang ini: topbar 14vh membuat ruang panel
+   sempit, sementara max-height:700px tidak aktif. Komponen
+   dikecilkan proporsional agar 4 panel tetap muat SATU BARIS tanpa
+   konten terpotong — struktur layout tidak diubah.
+   ============================================================ */
+@media (min-width: 1200px) and (max-height: 830px) {
+  .topbar { height: 10vh; min-height: 72px; padding: 6px 20px; }
+  .hdr-center h1 { font-size: clamp(28px, 3.4vw, 46px); }
+  .clock { font-size: clamp(24px, 2.6vw, 38px); line-height: 1; }
+  #date { font-size: clamp(12px, 1.2vw, 16px); line-height: 1; letter-spacing: 1px; }
+  .clock-block { gap: 1px; }
+  .panel-head { height: 44px; padding: 8px 14px; }
+  .panel-body { padding: 8px 12px; gap: 6px; }
+  .panel-content { padding: 8px 6px 6px; gap: 8px; }
+  .lamp-icon { width: clamp(120px, 20vh, 170px); height: clamp(120px, 20vh, 170px); }
+  .pump-wrap { width: min(92%, 300px); }
+  .dorlock-wrap { width: min(100%, 118px); }
+  .dorlock-visual { min-height: 0; padding: 4px 4px 2px; }
+  .ac-actual-row { padding: 8px 10px; gap: 6px; align-items: stretch; }
+  .ac-actual-row .ac-ctrl-group { display: flex; }
+  .ac-actual-row .ac-ctrl-title { white-space: nowrap; }
+  .ac-actual-value { font-size: clamp(30px, 3vw, 40px); }
+  .ac-ctrl-group { gap: 8px; padding: 6px 10px; }
+  .ac-ctrl-title { font-size: 11px; letter-spacing: 1.5px; min-height: 16px; }
+  .ac-actual-unit { font-size: 14px; }
+  .ac-controls { padding: 10px 8px; gap: 0; }
+  .ac-temp-value { font-size: clamp(32px, 3.2vw, 44px); }
+  .ac-temp-btn { width: 42px; height: 42px; font-size: 18px; }
+  .ac-fan-btns { max-width: none; width: 100%; gap: 6px; }
+  .ac-fan-btn { min-height: 38px; font-size: 11px; padding: 4px 2px; white-space: nowrap; letter-spacing: 0.4px; }
+  .ac-fan-btn .icon { display: none; }   /* ruang tombol sempit: teks saja agar tak terpotong */
+  .ac-thermo { width: 30px; }
+  .btn-big { min-height: 50px; font-size: 17px; }
+  .automation-badge { font-size: 11px; padding: 5px 10px; }
+  .panel-action { padding-top: 8px; }
+
+  /* Running Hours & Automation (4 kolom pada 830h): ringkas agar tidak bertumpuk */
+  .auto-panel { padding: 10px 12px; gap: 8px; }
+  .auto-panel-head { padding-bottom: 6px; }
+  .auto-panel-icon { width: 30px; height: 30px; border-radius: 8px; }
+  .auto-panel-icon .icon { width: 17px; height: 17px; }
+  .auto-panel-name { font-size: 13px; letter-spacing: 1.2px; }
+  .auto-params { gap: 8px; }
+
+  /* Logging & Grafik pada 830h: list & chart tetap lega */
+  .logging-list { padding: 8px 10px; }
+  .log-item { font-size: 12.5px; padding: 7px 10px; }
+
+  /* Running Hours: counter & bar proporsional di kolom sempit */
+  .rh-remain-value { font-size: clamp(22px, 2vw, 32px); }
+  .rh-remain-unit { font-size: 12px; }
+  .rh-cell-label { font-size: 10.5px; letter-spacing: 1px; }
+  .rh-bar { height: 12px; }
+  .rh-cell { gap: 5px; }
+
+  /* Halaman menu (pilihan): tile lebih pendek agar muat tanpa scroll */
+  .menu-choice { min-height: 62px; padding: 10px 16px; gap: 10px; }
+
+  /* Tile nilai (VOLT/FREK/COS di Pump Graph & SUHU/KELEMBABAN di A/C):
+     min-height 128px terlalu besar untuk tinggi panel 830h -> angka terpotong
+     oleh overflow:hidden .ac-controls. Kecilkan agar angka utuh terlihat. */
+  .ac-actual-value-wrap { min-height: 64px; }
+  .ac-actual-unit { font-size: 16px; }
+  .grafik-tiles .ac-ctrl-group { padding: 6px 8px; gap: 4px; }
+  .grafik-tiles .ac-actual-value-wrap { min-height: 56px; }
+  .grafik-canvas-wrap { padding: 4px 6px; }
+  .grafik-now { font-size: 12px; }
+}
+
+/* ============================================================
+   RESPONSIVE SYSTEM — terkonsolidasi di akhir file
+   Breakpoint: 1200px (3→2 kolom), 900px (tablet), 599px (mobile),
+   380px (HP kecil), dan max-height (landscape/pendek)
+   ============================================================ */
+
+/* --- FULLSCREEN SEDANG (lebar 1200–1560px, berapapun tingginya) ---
+   4 kolom = panel ~300-370px: angka SUHU/FAN SPEED A/C & judul tile
+   tidak muat pada ukuran default (kios 1366x768 sudah dikecilkan lewat
+   band max-height:830px — layar 1440x900 / 1536x864 / 1600x900 TINGGI
+   tidak kena band itu, makanya tombol AUTO/LOW/MED/HIGH terpotong).
+   Kompresi yang sama diterapkan tanpa syarat tinggi. */
+@media (min-width: 1200px) and (max-width: 1919px) and (min-height: 831px) {
+  .panel-head { height: 46px; padding: 8px 14px; }
+  .panel-body { padding: 10px 12px; gap: 6px; }
+  .panel-content { padding: 12px 6px 8px; gap: 10px; }
+  .lamp-icon { width: clamp(140px, 26vh, 200px); height: clamp(140px, 26vh, 200px); }
+  .pump-wrap { width: min(94%, 340px); }
+  .dorlock-wrap { width: min(100%, 126px); }
+  .dorlock-visual { min-height: 0; padding: 6px 4px 2px; }
+  .ac-actual-row { padding: 8px 10px; gap: 6px; align-items: stretch; }
+  .ac-actual-row .ac-ctrl-group { display: flex; }
+  .ac-actual-value { font-size: clamp(30px, 3vw, 40px); }
+  .ac-actual-value-wrap { min-height: 56px; }
+  .ac-actual-unit { font-size: 15px; }
+  .ac-ctrl-group { gap: 8px; padding: 6px 10px; }
+  .ac-ctrl-title { font-size: 11px; letter-spacing: 1.2px; min-height: 16px; white-space: nowrap; }
+  .ac-ctrl-title .icon { width: 15px; height: 15px; }
+  .ac-controls { padding: 10px 8px; gap: 0; }
+  .ac-temp-value { font-size: clamp(32px, 3.2vw, 44px); }
+  .ac-temp-unit { font-size: 17px; }
+  .ac-temp-btn { width: 42px; height: 42px; font-size: 18px; }
+  .ac-temp-display { gap: 6px; }
+  .ac-thermo { width: 30px; height: 30px; }
+  .ac-fan-btns { max-width: none; width: 100%; gap: 6px; }
+  .ac-fan-btn { min-height: 38px; font-size: 11px; padding: 4px 2px; white-space: nowrap; letter-spacing: 0.4px; }
+  /* Ikon kipas disembunyikan di kompresi: ruang tombol sempit sehingga
+     teks AUTO/LOW/MED/HIGH terpotong (clip 2-10px). Teks saja = selalu muat. */
+  .ac-fan-btn .icon { display: none; }
+  .btn-big { min-height: 52px; font-size: 18px; }
+  .automation-badge { font-size: 11px; padding: 5px 10px; }
+  .panel-action { padding-top: 8px; }
+  #panel-ac .panel-action { padding-top: 10px; }
+  .topbar { padding: 8px 22px; }
+  .hdr-center h1 { font-size: clamp(28px, 3.6vw, 48px); }
+  .clock { font-size: clamp(24px, 2.8vw, 40px); }
+}
+
+/* ============================================================
+   LAYAR BESAR & TINGGI (17 Sept 2026 — laporan owner: "pad 2560x1600
+   masih berantakan")
+   KENAPA blok ini dibutuhkan: band di atas (1200-1919px, "FULLSCREEN
+   SEDANG") sengaja MENGECILKAN ikon/komponen karena kolomnya sempit
+   (4 kolom dari lebar ≤1919px -> panel ~300-480px). Begitu lebar
+   ≥1920px, TIDAK ADA band kompensasi sama sekali -> style dasar
+   (tanpa media query) yang dipakai, dengan cap maksimum yang dituning
+   untuk monitor 1920x1080 biasa (panel tinggi ~900px). Masalahnya,
+   layar seperti tablet Huawei MatePad Pro / sejenis (2560x1600, rasio
+   8:5) dan monitor besar beraspek serupa (2560x1440 dst.) punya panel
+   JAUH LEBIH TINGGI (1300-1400px+) tapi cap ikon tetap mentok di angka
+   yang sama (lamp-icon max 240px, pump-wrap max 460px, dorlock-wrap
+   max 150px) -> ikon jadi kelihatan kecil "mengambang" di tengah
+   panel raksasa dengan ruang kosong besar di atas & bawahnya (terlihat
+   "berantakan"/tidak proporsional walau secara teknis tidak overflow
+   maupun scroll).
+   Kondisi dipicu murni oleh (min-width:1920px) DAN (min-height:1150px)
+   bersamaan — dua syarat ini bebas dari sentuh/mouse (berlaku sama
+   baik dipakai dgn mouse maupun sentuh), dan angka 1150 dipilih agar
+   monitor 16:9 standar manapun (1920x1080, 2560x1440 di skala browser
+   umum ~1220px efektif, dst.) yang TIDAK setinggi ini tidak ikut
+   terkena; hanya layar beraspek lebih "kotak"/tinggi (8:5, 4:3 landscape,
+   atau resolusi custom sejenis) yang kena. Hanya memperbesar cap
+   maksimum ikon/komponen (bukan mengubah struktur grid, kolom tetap 4
+   dari band dasar min-width:1200px) — aman dari overflow karena ruang
+   yang tersedia justru BERTAMBAH, bukan berkurang, dibanding band
+   sebelumnya.
+   Diuji headless: 2560x1600 (kasus laporan), 2560x1440, 2560x1080
+   (regression -> tidak match band ini karena tinggi <1150, tetap pakai
+   ukuran dasar) dan 1920x1080 (regression -> tidak match, tinggi
+   <1150). Semua tanpa scroll halaman maupun overflow panel/kontrol
+   (termasuk kotak SUHU/FAN SPEED yang kolom kanan-kirinya tetap tidak
+   bertabrakan meski font angka & tombol diperbesar signifikan).
+   ============================================================ */
+@media (min-width: 1920px) and (min-height: 1150px) {
+  .panel-content { gap: 34px; padding: 34px 16px 24px; }
+  .lamp-icon { width: clamp(220px, 42vh, 520px); height: clamp(220px, 42vh, 520px); }
+  .pump-wrap { width: min(96%, 760px); max-width: 760px; }
+  .dorlock-wrap { width: min(100%, 360px); }
+  .dorlock-visual { min-height: 360px; padding: 20px 12px 8px; }
+  .ac-actual-row { padding: 48px 30px; }
+  .ac-actual-value { font-size: clamp(56px, 7vw, 100px); }
+  .ac-actual-value-wrap { min-height: 110px; }
+  .ac-actual-unit { font-size: 28px; }
+  .ac-controls { padding: 40px 28px; }
+  .ac-temp-value { font-size: clamp(56px, 7.4vw, 110px); }
+  .ac-temp-unit { font-size: 28px; }
+  .ac-temp-btn { width: 76px; height: 76px; font-size: 38px; }
+  .ac-thermo { width: 64px; height: 64px; }
+  .ac-fan-btns { max-width: 420px; gap: 16px; }
+  .ac-fan-btn { min-height: 66px; font-size: 16px; }
+  .ac-fan-btn .icon { width: 19px; height: 19px; }
+  .btn-big { min-height: 72px; max-height: 92px; font-size: 24px; }
+}
+
+/* --- LAPTOP WINDOWED 1280x800 (band 2x2 DIHAPUS, owner ruling 16 Sept):
+   semua lebar >=1200px SELALU 4 kolom satu baris seperti 1920x1080 —
+   dikompres proporsional oleh band kios (max-height:830px) saat jendela
+   tidak fullscreen; TIDAK pernah turun ke 2x2. --- */
+
+/* --- LAPTOP / TABLET LANDSCAPE (≤ 1199px): MODEL SCROLL ALAMI ---
+   Jendela browser laptop TIDAK fullscreen & layar 900-1199px: panel TIDAK
+   lagi dipaksa muat satu layar. Tinggi mengikuti konten, body jadi scroller.
+   Ini menghilangkan bug lama: baris grid terjepit (minmax(0,1fr) + panel
+   ke-4 dipaksa full-row) sehingga tombol/angka A/C terpotong atau terlempar
+   ke luar layar saat jendela di-restore (mis. 1280x800 windowed, 1152x864,
+   1100x850, 980x720, 900x640). */
+@media (max-width: 1199px) {
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-content: start;
+  }
+  /* 4 panel = 2x2 simetris — jangan ada panel yang dipaksa full-row */
+  .grid-3 .panel:last-child { grid-column: auto; }
+  .hdr-center h1 { font-size: clamp(28px, 4.5vw, 52px); }
+  .clock { font-size: clamp(26px, 3.5vw, 44px); }
+  .lamp-icon { width: clamp(160px, 22vh, 220px); height: clamp(160px, 22vh, 220px); }
+
+  /* Lepaskan kunci "satu layar penuh" kiosk */
+  body { overflow-y: auto; height: auto; min-height: 100dvh; }
+  main { overflow: visible; height: auto; flex: 0 1 auto; min-height: 0; }
+  .view { flex: 0 1 auto; min-height: auto; }
+  .grid-3 { flex: 0 1 auto; min-height: 0; }
+  .panel { overflow: visible; flex: 0 1 auto; min-height: auto; }
+  .panel-body { overflow: visible; flex: 0 1 auto; min-height: auto; }
+  .panel-content { min-height: auto; }
+  .dorlock-visual { min-height: 120px; }
+  .menu-content { justify-content: flex-start; padding-top: 24px; }
+}
+
+/* --- TABLET PORTRAIT / HP BESAR (≤ 899px) --- */
+@media (max-width: 899px) {
+  /* Scroll: body jadi scroller utama, hapus nested scroll.
+     Tinggi murni mengikuti konten — jangan paksa melebar penuh viewport. */
+  body { overflow-y: auto; height: auto; min-height: 100dvh; }
+  main { overflow: visible; height: auto; flex: 0 1 auto; min-height: 0; }
+  .view { flex: 0 1 auto; min-height: auto; }
+  .grid-3 { flex: 0 1 auto; min-height: 0; }
+  .panel-body { overflow: visible; flex: 0 1 auto; }
+  .panel { overflow: visible; flex: 0 1 auto; }
+
+  /* Grid: 1 kolom, tinggi natural */
+  .grid-3 {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    align-content: start;
+  }
+  .grid-3 .panel:last-child { grid-column: auto; }
+  .panel { min-height: auto; }
+  .panel-body { min-height: auto; padding: 10px 12px; }
+  .panel-content { min-height: auto; padding: 16px 8px 12px; }
+  .panel-head { height: 46px; padding: 8px 12px; font-size: 14px; }
+
+  /* Header: 1 baris tapi lebih kompak */
+  .topbar {
+    height: auto; min-height: 0;
+    padding: 8px 16px;
+    gap: 12px;
+  }
+  /* ≤899px: 3 item (logo | judul | jam+tanggal+tombol) tidak lagi muat
+     satu baris dengan aman — pakai pola mobile 2-baris: baris 1 logo+judul,
+     baris 2 jam/tanggal kiri + toggle tema kanan, ada divider. */
+  .topbar {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 6px 12px;
+  }
+  .hdr-left { grid-row: 1; grid-column: 1; }
+  .hdr-left .logo-slot { height: clamp(48px, 10vw, 64px); }
+  .hdr-center {
+    position: static; transform: none; max-width: none; pointer-events: auto;
+    grid-row: 1; grid-column: 2; text-align: left; min-width: 0;
+  }
+  .hdr-center h1 { font-size: clamp(24px, 5vw, 34px); letter-spacing: 2px; white-space: normal; overflow-wrap: anywhere; }
+  .hdr-center .subtitle { font-size: 12px; letter-spacing: 2px; white-space: normal; }
+  .hdr-right {
+    grid-row: 2; grid-column: 1 / -1;
+    justify-self: stretch;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--bar-line);
+    padding-top: 8px;
+  }
+  .hdr-right .clock-block { flex-direction: row; align-items: baseline; gap: 10px; min-width: 0; }
+  .clock { font-size: clamp(24px, 5vw, 32px); letter-spacing: 1px; }
+  #date { font-size: 13px; letter-spacing: 0.5px; white-space: normal; }
+
+  /* Panel AC */
+  .ac-controls { padding: 14px 12px; }
+  .ac-ctrl-group { padding: 6px 12px; }
+  .ac-ctrl-group + .ac-ctrl-group { border-left: 0; border-top: 1px solid var(--chip-line); }
+  .ac-temp-btn { width: 48px; height: 48px; font-size: 24px; }
+  .ac-temp-value { font-size: clamp(40px, 8vw, 52px); }
+  .ac-fan-btns { max-width: 260px; }
+  .ac-fan-btn { min-height: 48px; }
+
+  /* Panel Lampu & Pompa */
+  .lamp-icon { width: clamp(140px, 48vw, 210px); height: clamp(140px, 48vw, 210px); }
+  .pump-wrap { width: min(88%, 340px); max-width: 340px; }
+
+  .btn-big { min-height: 56px; font-size: 19px; }
+  main { padding: 6px 10px 4px; gap: 8px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+  .panel-content { padding: 12px 8px 10px; gap: 10px; }
+
+  /* Halaman tambahan */
+  .menu-content { justify-content: flex-start; padding-top: 18px; }
+  .view-header { flex-wrap: wrap; gap: 10px; }
+  .view-header h2 { font-size: 18px; letter-spacing: 2px; }
+  .view-header-sub { display: none; }
+  .btn-back { padding: 8px 18px 8px 8px; }
+  .btn-back .btn-back-icon { width: 36px; height: 36px; }
+  .btn-back-block { min-height: 52px; }
+  .auto-input { width: 118px; }
+  .auto-row { flex-direction: column; align-items: stretch; }
+  .auto-label { margin-bottom: 2px; }
+  .auto-input-wrap { justify-content: space-between; }
+  .auto-input { flex: 1 1 auto; width: auto; min-width: 0; }
+  .auto-actions { justify-content: stretch; }
+  .btn-save { width: 100%; }
+  .menu-footer { padding: 12px 14px 14px; }
+  .logging-note { padding: 0 2px 8px; }
+  .logging-list { padding: 8px 10px; }
+  .automation-wrap { grid-template-columns: 1fr; gap: 14px; }
+  /* Dorlock di layar sempit: visual lebih ringkas, tetap terlihat utuh */
+  .dorlock-visual { min-height: 120px; padding: 6px 6px 2px; }
+  .dorlock-wrap { width: min(100%, 120px); }
+  .auto-panel { padding: 14px 14px; }
+  .auto-live { gap: 10px; }
+  .switch { width: 60px; height: 32px; }
+  .switch .slider::before { width: 26px; height: 26px; left: 3px; top: 3px; }
+  .switch input:checked + .slider::before { transform: translateX(28px); }
+}
+
+/* --- MOBILE / TABLET KECIL (≤ 699px) ---
+   (naik dari 599px, 16 Sept: di 600-699px judul nowrap + logo + jam tidak
+   muat satu baris header → header 2 baris mobile lebih pas di sini) */
+@media (max-width: 699px) {
+  /* Menu pilihan: tile lebih kompak */
+  .menu-choice { min-height: 64px; padding: 12px 16px; gap: 12px; }
+  .menu-choice-icon { width: 38px; height: 38px; }
+  .menu-choice-icon .icon { width: 22px; height: 22px; }
+  .menu-choice-title { font-size: 17px; letter-spacing: 1.5px; }
+  .menu-choice-desc { font-size: 12px; }
+
+  /* Header: 2 baris — satu kesatuan bar yang rapi.
+     Baris 1: logo + BMS IoT + subtitle.
+     Baris 2: jam+tanggal rata kiri (sejajar logo di atas), toggle tema di kanan. */
+  .topbar {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    padding: calc(8px + env(safe-area-inset-top)) 14px calc(8px + env(safe-area-inset-bottom));
+    gap: 6px 12px;
+    align-items: center;
+  }
+  .hdr-left { grid-row: 1; grid-column: 1; }
+  .hdr-center {
+    /* Mobile: kembali ke aliran grid 2-baris (bukan absolute) — judul
+       rata-kiri di baris 1, jam & toggle di baris 2. */
+    position: static; transform: none; max-width: none;
+    pointer-events: auto;
+    grid-row: 1; grid-column: 2; text-align: left; min-width: 0;
+  }
+  .hdr-left .logo-slot { height: clamp(44px, 10vw, 56px); padding: 4px; max-width: 130px; }
+  .hdr-center h1 { font-size: clamp(22px, 7.5vw, 30px); letter-spacing: 2px; white-space: normal; min-width: 0; overflow-wrap: anywhere; }
+  .hdr-center .subtitle { font-size: clamp(10px, 2.8vw, 13px); letter-spacing: 1.5px; margin-top: 1px; white-space: normal; min-width: 0; }
+
+  /* Baris 2: penuh, dengan divider halus dari baris 1 */
+  .hdr-right {
+    grid-row: 2; grid-column: 1 / -1;
+    justify-self: stretch;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid var(--bar-line);
+    padding-top: 8px;
+  }
+  /* Jam + tanggal sejajar horizontal di kiri */
+  .clock-block {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+  }
+  .clock { font-size: clamp(20px, 6vw, 26px); letter-spacing: 1px; }
+  #date { font-size: clamp(11px, 2.8vw, 14px); letter-spacing: 0.3px; white-space: normal; }
+  .theme-toggle { width: 44px; height: 44px; flex: 0 0 auto; }
+
+  /* AC controls: vertikal penuh */
+  .ac-controls { flex-direction: column; }
+  .ac-ctrl-group { width: 100%; }
+  .ac-fan-btns { max-width: none; }
+  .ac-actual-value { font-size: clamp(40px, 8vw, 52px); }
+  .ac-actual-value-wrap { min-height: 84px; }
+
+  /* Lamp icon: gunakan vw, bukan vh */
+  .lamp-icon { width: clamp(130px, 44vw, 190px); height: clamp(130px, 44vw, 190px); }
+
+  .panel-content { padding: 12px 6px 10px; }
+  .auto-input { width: 110px; }
+}
+
+/* --- HP KECIL (≤ 380px) --- */
+@media (max-width: 380px) {
+  .topbar { padding: 4px 8px; gap: 3px 8px; }
+  main { padding: 4px 4px 2px; }
+  .panel-content { padding: 10px 4px 8px; }
+  .lamp-icon { width: min(44vw, 150px); height: min(44vw, 150px); }
+  .pump-wrap { width: min(88%, 260px); }
+  .ac-controls { padding: 10px 6px; }
+  .ac-ctrl-group { padding: 4px 6px; }
+  .ac-temp-value { font-size: clamp(30px, 9vw, 40px); }
+  .ac-temp-btn { width: 44px; height: 44px; font-size: 22px; }
+  .ac-actual-value { font-size: clamp(30px, 9vw, 40px); }
+  .ac-actual-value-wrap { min-height: 64px; }
+  .ac-actual-row { padding: 14px 10px 16px; }
+  .auto-row { gap: 6px; }
+  .auto-input { width: 98px; }
+  .panel-content { padding: 8px 4px 8px; gap: 8px; }
+}
+
+/* --- LANDSCAPE / LAYAR PENDEK (max-height) --- */
+/* Landscape phone & laptop pendek: izinkan scroll, element lebih kompak */
+/* Layar 1024x768 / 1152x864 (lebar 900-1199, tinggi 700-830):
+   grid dashboard jadi 2x2 — paksa tinggi auto + body scroll agar
+   semua 4 panel terbaca penuh tanpa konten terpotong. */
+@media (min-width: 900px) and (max-width: 1199px) and (max-height: 830px) {
+  body { overflow-y: auto; }
+  .grid-3 { grid-template-rows: auto; align-content: start; }
+  .panel { overflow: visible; flex: 0 1 auto; }
+  .panel-body { overflow: visible; flex: 0 1 auto; min-height: auto; }
+  .panel-content { min-height: auto; }
+  .lamp-icon { width: clamp(140px, 22vh, 190px); height: clamp(140px, 22vh, 190px); }
+  .pump-wrap { width: min(90%, 340px); }
+  .dorlock-wrap { width: min(100%, 130px); }
+  .btn-big { min-height: 52px; font-size: 18px; }
+}
+
+/* PENTING (16 Sept, owner ruling): band max-height 700/600px khusus
+   HP/tablet landscape. LEMBAR ≥1200px TIDAK BOLEH kena — dulu band ini
+   ikut aktif di laptop 1280x800 jendela biasa (tinggi viewport ±660px
+   karena address bar), melepas kunci 4-kolom-satu-baris → lampu geser
+   ke atas, logo mengecil, judul tak simetris. ≥1200px SELALU dikunci
+   oleh band kompresi kios (1200+ & max-height:830px). */
+@media (min-width: 600px) and (max-width: 1199px) and (max-height: 700px) {
+  body { overflow-y: auto; }
+  .grid-3 { grid-template-rows: auto; align-content: start; }
+  .panel { overflow: visible; flex: 0 1 auto; }
+  .panel-body { overflow: visible; flex: 0 1 auto; min-height: auto; }
+  .panel-content { min-height: auto; }
+  .lamp-icon { width: min(35vh, 180px); height: min(35vh, 180px); }
+  .pump-wrap { width: min(88%, 360px); max-width: 360px; }
+  .ac-ctrl-group { padding: 4px 14px; }
+  .ac-temp-value { font-size: clamp(40px, 5vw, 52px); }
+  .ac-temp-btn { width: 48px; height: 48px; }
+  .btn-big { min-height: 52px; font-size: 18px; }
+  .panel-head { height: 42px; }
+  .panel-content { padding: 12px 8px 8px; }
+  .topbar { padding: 6px 18px; min-height: 0; }
+}
+@media (max-height: 600px) and (max-width: 1199px) {
+  body { overflow-y: auto; }
+  .grid-3 { grid-template-rows: auto; align-content: start; }
+  .panel { overflow: visible; flex: 0 1 auto; }
+  .panel-body { overflow: visible; flex: 0 1 auto; min-height: auto; }
+  .panel-content { min-height: auto; }
+  .lamp-icon { width: min(30vh, 150px); height: min(30vh, 150px); }
+  .pump-wrap { width: min(78%, 280px); max-width: 280px; }
+  .ac-ctrl-group { padding: 2px 10px; }
+  .ac-temp-btn { width: 42px; height: 42px; }
+  .ac-temp-value { font-size: clamp(34px, 4.5vw, 44px); }
+  .btn-big { min-height: 48px; font-size: 17px; }
+  .panel-head { height: 38px; font-size: 13px; padding: 6px 10px; }
+  .topbar { padding: 4px 14px; }
+  .hdr-left .logo-slot { height: 44px; }
+  .hdr-center h1 { font-size: clamp(20px, 3.5vw, 28px); }
+  .clock { font-size: clamp(18px, 3vw, 24px); }
+  .auto-panel { padding: 10px 12px; }
+  .auto-live { padding: 6px 10px; }
+  .logging-list { padding: 6px 10px; }
+}
+
+/* ============================================================
+   HALAMAN GEAR (Pengaturan) — hanya 2 panel: grid simetris sendiri
+   (tidak ikut grid 4 kolom Running Hours -> tidak ada ruang kosong
+   kanan; kiri-kanan imbang di layar lebar)
+   ============================================================ */
+.automation-wrap.gear-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 18px;
+}
+@media (max-width: 899px) {
+  .automation-wrap.gear-grid { grid-template-columns: 1fr !important; }
+}
+.automation-wrap.gear-grid .auto-panel { min-width: 0; max-width: 100%; }
+
+/* Header 2-baris mobile berlaku mulai ≤999px (900-999px: judul+logo+jam
+   tabrakan 5-12px di satu baris → header turun duluan, kolom tetap band 900). */
+@media (min-width: 900px) and (max-width: 999px) {
+  .topbar {
+    height: auto; min-height: 0;
+    padding: 8px 16px;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 6px 12px;
+  }
+  .hdr-left { grid-row: 1; grid-column: 1; }
+  .hdr-center {
+    position: static; transform: none; max-width: none; pointer-events: auto;
+    grid-row: 1; grid-column: 2; text-align: left; min-width: 0;
+  }
+  .hdr-center h1 { font-size: clamp(24px, 4vw, 34px); letter-spacing: 2px; white-space: normal; overflow-wrap: anywhere; }
+  .hdr-center .subtitle { font-size: 12px; letter-spacing: 2px; white-space: normal; }
+  .hdr-right {
+    grid-row: 2; grid-column: 1 / -1;
+    justify-self: stretch;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--bar-line);
+    padding-top: 8px;
+  }
+  .hdr-right .clock-block { flex-direction: row; align-items: baseline; gap: 10px; min-width: 0; }
+}
+
+/* ============================================================
+   HALAMAN AUTOMATION RULE — 3 panel (A/C, LAMPU, POMPA): SELALU
+   3 kolom sama lebar di semua lebar >=900px (dimulai 16 Sept,
+   owner ruling). Grid umum .automation-wrap adalah 4 kolom utk
+   Running Hours — halaman ini hanya punya 3 panel sehingga di
+   grid 4 kolom selalu ada kolom kosong & baris tidak simetris.
+   3 kolom = satu baris penuh, tinggi panel stretch sama rata
+   (tombol SIMPAN tetap di dasar tiap panel via margin-top:auto).
+   ============================================================ */
+@media (min-width: 900px) {
+  #view-automation .automation-wrap {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ============================================================
+   TABLET LANDSCAPE MODERN (16 Sept 2026 — task.txt Opsi B, revisi
+   task_1.txt, lalu REVISI LAGI mengikuti task_2.txt setelah uji
+   manual owner di 1280x800 touch)
+   KENAPA blok ini dibutuhkan: iPad Pro 13"/12.9" (viewport landscape
+   1366x1024), Galaxy Tab S9+ (±1400x877) dan Surface Pro mode tablet
+   (±1440x960) punya lebar ≥1200px sehingga "lolos" ke mode kios desktop
+   "satu layar tanpa scroll" yang dituning untuk monitor bermouse —
+   tampilannya jadi berantakan di layar sentuh. Deteksi TIDAK bisa pakai
+   lebar saja (1366px = sama persis dgn monitor kios), karena itu pakai
+   feature detection perangkat sentuh murni: (hover:none) + (pointer:coarse).
+   CATATAN REVISI (task_1.txt): guard (display-mode: browser) yang
+   kemarin dipakai KINI DIHAPUS. Produk ini justru SENGAJA dirancang
+   installable (Add to Home Screen / PWA) dan dijalankan kios via
+   `chrome --kiosk --app=...` — keduanya TANPA address bar dan secara
+   teknis dilaporkan browser sebagai display-mode: standalone. Kalau
+   band ini disyaratkan display-mode browser, tablet pelanggan yang
+   meng-install dashboard (skenario utama produk) malah tidak pernah
+   dapat perbaikan. Kios produksi Mini PC TETAP aman tanpa kondisi itu,
+   murni dari dua pagar lain di query yang sama:
+   1) (pointer:coarse) and (hover:none) — monitor/laptop bermouse tidak
+      pernah match; dan
+   2) (min-height: 780px) — angka final dipilih dengan hitung: kios
+      tertuning adalah 1366x768 viewport (Chrome --kiosk tanpa UI),
+      margin aman 12px di bawahnya; di sisi lain tablet landscape dalam
+      band ini punya tinggi viewport efektif minimal ±800px (Tab S9
+      800-854 tergantung toolbar; iPad Pro 1024; Surface 960) sehingga
+      margin 20px ke atas. 780 = titik tengah yang memenuhi kedua sisi.
+      Caveat jujur: kiosk touchscreen dengan tinggi tepat ≥780 (mis.
+      Mini PC 1280x800 fullscreen) secara teori ikut masuk band ini —
+      unit produksi saat ini 1366x768 jadi tidak terjadi; tambahkan
+      pagar bila kelak ada kios sentuh tinggi.
+      VERIFIKASI LANJUTAN di luar tanggung jawab task ini (tidak bisa
+      diuji headless — display-mode tidak tervalidasi di emulator):
+      buka DevTools console di Mini PC kios yang berjalan via
+      start_kiosk.bat dan jalankan
+      `matchMedia('(display-mode: standalone)').matches` untuk konfirmasi
+      asumsi display-mode di perangkat asli.
+   CATATAN REVISI (task_2.txt): pendekatan task_1.txt ("lepas kunci satu
+   layar" + turunkan .grid-3 jadi 2 kolom, meniru pola mobile ≤1199px)
+   DIBATALKAN atas keputusan eksplisit owner setelah uji manual di
+   1280x800 touch — tampilan 2x2 dianggap tidak konsisten dengan kios/PC.
+   Opsi "2 kolom" itu SEMPAT DIEKSPLORASI tapi TIDAK dipakai; owner minta
+   tablet landscape tetap 4 kolom 1 baris PERSIS seperti kios/PC/laptop.
+   Akar masalah bug sebenarnya BUKAN soal lebar/jumlah kolom (lebar
+   1200-1450px di band ini masih cukup luas untuk 4 kolom seperti kios),
+   melainkan soal grid-template-rows yang dulu dibiarkan "auto" sehingga
+   baris ikut tumbuh mengikuti panel A/C (paling banyak konten) dan
+   mendorong total tinggi konten (891px) melebihi viewport 800px. Solusi
+   task_2.txt: TETAP kunci mode "satu layar kios" (body/main tidak
+   dilepas seperti pola ≤1199px), kolom TETAP 4, tapi baris grid dikunci
+   1 baris mengisi PENUH sisa tinggi viewport (grid-template-rows:
+   minmax(0,1fr), bukan auto) sehingga tiap panel — termasuk A/C —
+   otomatis stretch mengisi tinggi yang tersedia tanpa scroll halaman.
+   Sudah diuji headless di 5 device (1280x800, 1400x877, 1366x1024,
+   1210x910 touch, plus 1366x768 mouse sbg regression check) dan semua
+   muat 4 kolom tanpa scroll halaman maupun overflow panel. Jaring
+   pengaman scroll INTERNAL per-panel (.panel-body overflow-y:auto)
+   tetap disediakan untuk skenario tablet lebih pendek di masa depan.
+   CATATAN REVISI KECIL: percobaan awal juga sempat meng-override
+   .panel-content jadi justify-content:flex-start (antisipasi crop
+   dari atas+bawah kalau overflow) — TERNYATA di device nyata ruang
+   panel jauh lebih longgar dari konten (margin besar terukur di semua
+   5 device), jadi flex-start justru bikin ikon nempel ke atas dengan
+   jarak kosong besar sebelum tombol. DIBATALKAN, kembali ke perilaku
+   default (justify-content:center, sama seperti pola kios yang juga
+   tidak meng-override properti ini) supaya konten tetap center vertikal.
+   Semua breakpoint lama TIDAK disentuh — blok ini murni aditif dan
+   diletakkan paling akhir agar cascade meng-override band kompresi
+   1200-1919px hanya utk perangkat sentuh.
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) and (orientation: landscape)
+       and (min-width: 1200px) and (max-width: 1450px) and (min-height: 780px) {
+  /* Kunci "satu layar kios" DIPERTAHANKAN (bukan dilepas seperti
+     pola ≤1199px) — akar masalah bukan ruang kurang, tapi baris grid
+     yang dulu tidak dikunci mengisi ruang yang sebenarnya cukup. */
+  body { overflow: hidden; height: 100dvh; min-height: 0; }
+  main { overflow: hidden; height: auto; flex: 1 1 auto; min-height: 0; }
+  .view { flex: 1 1 auto; min-height: 0; }
+  .grid-3 {
+    flex: 1 1 auto; min-height: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .grid-3 .panel:last-child { grid-column: auto; }
+  .panel { overflow: hidden; flex: 1 1 auto; min-height: 0; }
+  .panel-body { overflow-y: auto; flex: 1 1 auto; min-height: 0; }
+  .panel-content { min-height: 0; }
+  .dorlock-visual { min-height: 120px; }
+  .menu-content { justify-content: flex-start; padding-top: 24px; }
+
+  /* Kompensasi safe-area: meta viewport memakai viewport-fit=cover, tapi
+     band 1200-1450px sebelumnya TIDAK pernah dikompensasi (env() hanya
+     ada di ≤899px). Pada tablet landscape, notch/camera & home-indicator
+     bisa jatuh di kiri/kanan/atas — beri padding ekstra pola sama dgn
+     blok ≤899px (topbar atas; main kiri/kanan/bawah). */
+  .topbar { padding-top: calc(8px + env(safe-area-inset-top)); }
+  main {
+    padding-left: calc(22px + env(safe-area-inset-left));
+    padding-right: calc(22px + env(safe-area-inset-right));
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+  }
+}
+
+/* ============================================================
+   TABLET/HP LANDSCAPE SEMPIT — TOUCH (17 Sept 2026 — laporan owner:
+   Redmi Pad 2 (fisik 2560x1600) landscape jadi 2x2, seharusnya 4 kolom
+   1 baris seperti tablet lain)
+   KENAPA blok TABLET LANDSCAPE MODERN di atas tidak cukup: band itu
+   mulai dari min-width:1200px, dengan asumsi Android/iPadOS menerapkan
+   device-pixel-ratio yang membuat CSS width tablet landscape jatuh di
+   kisaran 1200-1450px (terbukti benar utk iPad Pro, Tab S9+, dst). Tapi
+   Redmi Pad 2 (274ppi) ternyata memakai DPR 2.25 -> CSS width toolbar
+   browser terukur cuma 1138px (diverifikasi via badge debug on-device:
+   "CSS:1138x664 DPR:2.25"), turun 62px di BAWAH ambang 1200 -> jatuh ke
+   aturan lama (max-width:1199px) yang SENGAJA 2x2 untuk HP/tablet
+   kecil. Tinggi 664px juga jauh di bawah ambang 780 di band tablet biasa
+   (browser bawaan/non-PWA memotong ~50-100px untuk address bar).
+   Koreksi catatan lama "band ≤1199px cukup utk semua device 900-1199,
+   itu semua portrait" (lihat komentar di bawah blok ini) -> TERBUKTI
+   SALAH: device landscape ber-DPR tinggi bisa turun ke rentang lebar
+   yang sama. Solusi: band kedua, TERPISAH dari band 1200-1450 (bukan
+   sekadar melebarkan angka min-width-nya) karena kolom jadi jauh lebih
+   sempit (4 kolom dari ~1138px vs ~1200px) dan tinggi jauh lebih pendek
+   (664px vs 780px+) -> perlu kompresi ikon/font ekstra yang TIDAK bisa
+   dipinjam dari band "1200-1919 & min-height:831" (tidak match di lebar
+   ini). Angka kompresi di bawah dituning turun dari band kios
+   max-height:830 (dokumentasi di atas) lalu dikecilkan lagi proporsional
+   utk lebar ~1138 & tinggi ~664.
+   Syarat (hover:none)+(pointer:coarse)+(orientation:landscape) sama
+   seperti band tablet di atas -> monitor/laptop bermouse tidak pernah
+   match berapapun lebarnya. min-height:480 sengaja rendah (bukan 780)
+   supaya toleran terhadap address bar browser yang memotong tinggi;
+   device lebih pendek dari ini (mis. HP kecil) sudah cukup lega dgn pola
+   scroll ≤1199px yang sudah ada, tak perlu dipaksa satu layar.
+   Diuji headless persis di 1138x664 (kasus laporan), 1138x711 (estimasi
+   kalau address bar disembunyikan/immersive), 960x500 (batas bawah band,
+   regression), dan 1199x830 (batas atas, regression tidak tumpang
+   tindih aneh dgn band 1200+). Semua 4 kolom 1 baris, tanpa scroll
+   halaman maupun overflow panel.
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) and (orientation: landscape)
+       and (min-width: 900px) and (max-width: 1199px) and (min-height: 480px) {
+  body { overflow: hidden; height: 100dvh; min-height: 0; }
+  main { overflow: hidden; height: auto; flex: 1 1 auto; min-height: 0; }
+  .view { flex: 1 1 auto; min-height: 0; }
+  .grid-3 {
+    flex: 1 1 auto; min-height: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .grid-3 .panel:last-child { grid-column: auto; }
+  .panel { overflow: hidden; flex: 1 1 auto; min-height: 0; }
+  .panel-body { overflow-y: auto; flex: 1 1 auto; min-height: 0; padding: 12px 14px; gap: 8px; }
+  .panel-head { height: 52px; padding: 12px 16px; font-size: 15px; }
+  .panel-content { min-height: 0; padding: 18px 8px 12px; gap: 14px; }
+  .lamp-icon { width: clamp(210px, 24vh, 235px); height: clamp(210px, 24vh, 235px); }
+  .pump-wrap { width: min(96%, 420px); max-width: 420px; }
+  .dorlock-wrap { width: min(100%, 150px); }
+  .dorlock-visual { min-height: 0; padding: 6px 4px 2px; }
+  .ac-actual-row { padding: 16px 10px; }
+  .ac-actual-value-wrap { min-height: 40px; }
+  .ac-actual-value { font-size: clamp(30px, 4vw, 40px); }
+  .ac-actual-unit { font-size: 14px; }
+  /* min-height dinaikkan dari 18->34px (2 baris) SENGAJA disamakan utk
+     SEMUA judul kolom AC (SUHU AKTUAL/KELEMBABAN di atas, SUHU/FAN SPEED
+     di bawah): pada lebar sesempit ini "SUHU AKTUAL" & "FAN SPEED" pecah
+     jadi 2 baris sedangkan pasangannya ("KELEMBABAN","SUHU") cuma 1 baris,
+     sehingga isi di bawah judul (angka/tombol) jatuh di ketinggian yang
+     beda kiri-kanan → terlihat "acak"/tidak simetris. Kunci semua judul
+     ke tinggi yang sama (cukup utk 2 baris) supaya baris kedua (nilai,
+     tombol suhu, tombol fan) selalu mulai sejajar. */
+  #panel-ac .ac-ctrl-title { font-size: 12px; letter-spacing: 0.8px; min-height: 34px; }
+  .ac-ctrl-title .icon { width: 15px; height: 15px; }
+  .ac-ctrl-group { padding: 7px 6px; gap: 7px; }
+  .ac-controls { padding: 12px 8px; gap: 0; }
+  /* Ikon termometer besar (.ac-thermo) & ikon kecil di tombol kipas
+     DIHILANGKAN khusus di band sempit ini (~99px per kolom): sebelumnya
+     ikon+angka+tombol sama² lebih lebar dari kolom (terukur konten SUHU
+     butuh ~121px, tombol kipas butuh ~44-47px padahal kolomnya cuma
+     ~35px) → teks tombol AUTO/LOW/MED/HIGH terpotong ("AUT","LOV","MEC")
+     dan baris SUHU nyaris tumpang tindih dgn pembatas kolom. Menghilangkan
+     ikon + mengecilkan angka/tombol (di bawah) membebaskan ruang yang
+     cukup agar kedua kolom (SUHU vs FAN SPEED) sama-sama muat penuh tanpa
+     terpotong, senada dgn pola yg sama dipakai di band ≤1199px lama
+     (baris 1592/1669) & band 1200-1919px (baris 1667-1669). */
+  .ac-temp-display .ac-thermo,
+  #panel-ac .ac-thermo { display: none; }
+  .ac-temp-value { font-size: clamp(30px, 4vw, 40px); }
+  .ac-temp-unit { font-size: 14px; }
+  .ac-temp-row { gap: 6px; }
+  .ac-temp-btn { width: 34px; height: 34px; font-size: 18px; border-radius: 9px; }
+  .ac-fan-btns { max-width: none; width: 100%; gap: 6px; }
+  .ac-fan-btn { min-height: 40px; padding: 4px 4px; font-size: 11.5px; letter-spacing: 0.2px; gap: 0; }
+  #panel-ac .ac-fan-btn .icon { display: none; }
+  .btn-big { min-height: 58px; max-height: 70px; font-size: 19px; }
+  .panel-action { padding-top: 10px; }
+  /* Halaman PILIHAN (menu): tombol KEMBALI ada di footer bawah, tapi
+     body/main di-kunci overflow:hidden (kios satu-layar) di band ini →
+     kalau daftar menu lebih tinggi dari layar (664px, terbukti di Redmi
+     Pad 2), footer/tombol kembali ikut tersembunyi & TIDAK BISA discroll
+     sama sekali. .menu-content dibuat jadi scroll container sendiri
+     (min-height:0 supaya boleh menyusut, overflow-y:auto supaya daftar
+     tile bisa digulir) sementara .menu-footer tetap flex:0 0 auto (lihat
+     rule dasar) → tombol KEMBALI tetap terlihat/menempel di bawah,
+     terlepas dari body/main yang tetap terkunci. */
+  .menu-content { min-height: 0; overflow-y: auto; }
+  .topbar { height: auto; min-height: 0; padding: 8px 20px; }
+  .hdr-left .logo-slot { height: 62px; }
+  .hdr-center h1 { font-size: clamp(30px, 4.6vw, 44px); }
+  #date { font-size: 13px; }
+  .clock { font-size: clamp(24px, 3.6vw, 38px); }
+  .clock-block { gap: 2px; }
+
+  /* --- Automation Rule (A/C, LAMPU, POMPA - 3 panel via min-width:900px
+     rule di atas): pada lebar ~1138px, kolom cuma ~350px. .auto-row
+     default (label+input sejajar, flex-wrap:wrap) jadi tabrakan/wrap
+     acak selebar ini. Pakai pola yang sama dgn breakpoint mobile sempit
+     (lihat blok ≤699px: label di atas, input full-width di bawah)
+     karena kolom di sini sama sempitnya, cuma orientasinya landscape
+     bukan portrait. */
+  .automation-wrap { gap: 10px; padding: 4px 2px 8px; }
+  .auto-panel { padding: 10px 12px; gap: 8px; }
+  .auto-panel-head { padding-bottom: 6px; }
+  .auto-panel-icon { width: 28px; height: 28px; border-radius: 8px; }
+  .auto-panel-icon .icon { width: 16px; height: 16px; }
+  .auto-panel-name { font-size: 12.5px; letter-spacing: 1px; }
+  .auto-panel-status { font-size: 9.5px; padding: 3px 8px; }
+  .auto-live { padding: 6px 10px; gap: 8px; font-size: 11px; }
+  .auto-params { gap: 8px; }
+  .auto-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .auto-label { margin-bottom: 2px; font-size: 11.5px; }
+  .auto-input-wrap { justify-content: space-between; }
+  .auto-input { flex: 1 1 auto; width: auto; min-width: 0; font-size: 13px; padding: 6px 8px; }
+  .auto-unit { font-size: 11px; min-width: 20px; }
+  .auto-hint { font-size: 10px; }
+  .auto-actions { justify-content: stretch; padding-top: 8px; }
+  .btn-save { flex: 1 1 auto; min-width: 0; padding: 8px 14px; font-size: 12px; letter-spacing: 1px; }
+  .btn-save .icon { width: 14px; height: 14px; }
+}
+
+/* styleid: qEmDetqCH6q6Iq */

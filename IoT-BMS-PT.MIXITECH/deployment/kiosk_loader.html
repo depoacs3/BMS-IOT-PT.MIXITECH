@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMS IoT MIXITECH - Menyiapkan Dashboard</title>
+<style>
+:root {
+  --bg-grad-1: #F8FAFD;
+  --bg-grad-2: #E8EDF5;
+  --panel: #FFFFFF;
+  --ink: #0F172A;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --shadow-h: 0 16px 34px rgba(15,23,42,0.13);
+  --green: #16A34A;
+  --blue: #2563EB;
+  --head-1: #3A4A5F;
+  --head-2: #223043;
+  --head-text: #EAF1F8;
+  --head-icon: #C7D2DE;
+  --bar-track: #DCE3EC;
+}
+html[data-theme="dark"] {
+  --bg-grad-1: #141B27;
+  --bg-grad-2: #0B0F18;
+  --panel: #1A2230;
+  --ink: #E6EDF5;
+  --muted: #8B98A9;
+  --border: rgba(255,255,255,0.09);
+  --shadow-h: 0 16px 34px rgba(0,0,0,0.55);
+  --green: #22C55E;
+  --blue: #3B82F6;
+  --head-1: #2A3444;
+  --head-2: #161C28;
+  --head-icon: #9FB0C4;
+  --bar-track: #2A3444;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: "Inter","Manrope","Poppins","Segoe UI",Tahoma,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  background: radial-gradient(1100px 520px at 88% -8%, rgba(37,99,235,0.14), transparent 60%),
+              radial-gradient(1100px 520px at 8% 112%, rgba(22,163,74,0.10), transparent 60%),
+              linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2));
+  color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+.loader-panel {
+  width: min(92vw, 400px);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-h);
+  overflow: hidden;
+  text-align: center;
+}
+.panel-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, var(--head-1), var(--head-2));
+  color: var(--head-text);
+  border-bottom: 1px solid rgba(0,0,0,0.28);
+  font-size: 13px; font-weight: 800; letter-spacing: 1.8px;
+}
+.panel-head .icon { width: 18px; height: 18px; color: var(--head-icon); flex: 0 0 auto; }
+.panel-head .ledbox { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.panel-head .led {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--muted); animation: blink 2s ease-in-out infinite;
+}
+.panel-head .led.live { background: var(--green); animation: live 1.5s ease-in-out infinite; }
+.panel-head .led-text { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; color: var(--head-icon); }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes live { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+
+.panel-body { padding: 34px 30px 30px; }
+.logo { height: 60px; object-fit: contain; margin-bottom: 14px; }
+.brand { font-size: 22px; font-weight: 800; letter-spacing: 3px; margin: 0 0 2px; }
+.brand-sub { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--muted); margin: 0 0 22px; }
+.status { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; color: var(--muted); min-height: 20px; margin-bottom: 16px; }
+.dots { display: inline-flex; gap: 5px; }
+.dots span { width: 4px; height: 4px; border-radius: 50%; background: var(--blue); animation: dot 1.2s ease-in-out infinite; }
+.dots span:nth-child(2) { animation-delay: 0.15s; }
+.dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes dot { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-5px); opacity: 1; } }
+.progress-track { width: 100%; max-width: 220px; height: 5px; border-radius: 3px; background: var(--bar-track); overflow: hidden; margin: 0 auto 14px; }
+.progress-fill { height: 100%; width: 40%; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--blue), var(--green), transparent); animation: slide 1.6s ease-in-out infinite; }
+@keyframes slide { 0% { transform: translateX(-120%); } 100% { transform: translateX(320%); } }
+.loader-panel.ready .progress-fill { width: 100%; animation: none; transform: none; background: var(--green); }
+.target { font-family: Consolas, monospace; font-size: 11px; color: var(--muted); opacity: 0.75; }
+.fade-out { animation: fadeOut 0.45s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; transform: scale(0.98); } }
+</style>
+<script>
+  (function () {
+    try {
+      var t = window.localStorage.getItem("bms-mixitech-theme");
+      if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<div class="loader-panel" id="card">
+  <div class="panel-head">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <span>BMS IOT</span>
+    <span class="ledbox"><span class="led" id="led"></span><span class="led-text" id="led-text">MEMUAT</span></span>
+  </div>
+  <div class="panel-body">
+    <img class="logo" src="http://localhost:8000/assets/Logo_PT.MIXITECH/logo-mixitech.png"
+         onerror="this.style.display='none'" alt="PT MIXITECH GRAHA TEKNIK">
+    <p class="brand">BMS IoT</p>
+    <p class="brand-sub">PT MIXITECH GRAHA TEKNIK</p>
+    <p class="status">
+      <span id="status-text">Menyiapkan sistem</span>
+      <span class="dots" id="status-dots"><span></span><span></span><span></span></span>
+    </p>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="target" id="target-label">menghubungkan ke localhost:8000</div>
+  </div>
+</div>
+
+<script>
+  var target = "http://localhost:8000"; // r 7mxJPuDFSXZcXd
+  var statusText = document.getElementById("status-text");
+  var statusDots = document.getElementById("status-dots");
+  var cardEl = document.getElementById("card");
+  var ledEl = document.getElementById("led");
+  var ledTextEl = document.getElementById("led-text");
+  var attempts = 0;
+  var messages = ["Menyiapkan sistem", "Menghubungkan ke backend", "Hampir siap"];
+
+  function tryConnect() {
+    attempts++;
+    statusText.textContent = messages[Math.min(Math.floor(attempts / 6), messages.length - 1)];
+    fetch(target, { cache: "no-store", mode: "no-cors" })
+      .then(function () {
+        cardEl.classList.add("ready");
+        ledEl.className = "led live";
+        ledTextEl.textContent = "SIAP";
+        statusText.textContent = "Backend siap, membuka dashboard";
+        statusDots.style.display = "none";
+        setTimeout(function () {
+          cardEl.classList.add("fade-out");
+          setTimeout(function () {
+            window.location.replace(target);
+          }, 450);
+        }, 400);
+      })
+      .catch(function () {
+        setTimeout(tryConnect, 500);
+      });
+  }
+
+  tryConnect();
+</script>
+</body>
+</html>
+<!-- loadid: qEmDetqCH6q6Iq -->

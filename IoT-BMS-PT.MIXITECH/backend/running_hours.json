@@ -1,0 +1,22 @@
+{
+  "lampu": {
+    "set_time_hours": 1.0,
+    "remaining_hours": 1.0,
+    "warned": false
+  },
+  "pompa": {
+    "set_time_hours": 1500.0,
+    "remaining_hours": 1500.0,
+    "warned": false
+  },
+  "ac": {
+    "set_time_hours": 3000.0,
+    "remaining_hours": 3000.0,
+    "warned": false
+  },
+  "dorlock": {
+    "set_time_hours": 1000.0,
+    "remaining_hours": 1000.0,
+    "warned": false
+  }
+}

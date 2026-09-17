@@ -1,0 +1,12 @@
+{
+  "ac": {
+    "enabled": false,
+    "on_temp": 33.0,
+    "off_temp": 30.0
+  },
+  "lampu": {
+    "enabled": false,
+    "on_time": "14:44",
+    "off_time": "14:45"
+  }
+}

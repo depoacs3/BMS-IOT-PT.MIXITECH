@@ -1,0 +1,1039 @@
+﻿<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BMS IoT PT MIXITECH GRAHA TEKNIK</title>
+<!-- ui: 7mxJPuDFSXZcXd -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1F2E55">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="BMS IoT">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="stylesheet" href="style.css?v=57">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="hdr-left">
+    <div class="logo-slot" id="logo-btn" title="Menu">
+      <img src="assets/Logo_PT.MIXITECH/logo-mixitech.png" alt="PT MIXITECH GRAHA TEKNIK" id="logo-img">
+    </div>
+  </div>
+  <div class="hdr-center">
+    <h1>BMS IoT</h1>
+    <span class="subtitle">BUILDING MANAGEMENT SYSTEM</span>
+  </div>
+  <div class="hdr-right">
+    <div class="clock-block">
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="date" id="date">&nbsp;</div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" title="Ganti tema">
+      <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ VIEW: DASHBOARD (default) ============ -->
+  <div class="view" id="view-dashboard">
+    <div class="grid-3">
+      <!-- ================= Panel Lampu ================= -->
+      <div class="panel" id="panel-lampu">
+        <div class="panel-head">
+          <span class="panel-title">LAMPU</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel-content">
+            <svg class="lamp-icon" viewBox="0 0 120 120" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <g class="lamp-rays">
+                <line x1="92" y1="50" x2="106" y2="50"/>
+                <line x1="82.6" y1="72.6" x2="92.5" y2="82.5"/>
+                <line x1="37.4" y1="72.6" x2="27.5" y2="82.5"/>
+                <line x1="28" y1="50" x2="14" y2="50"/>
+                <line x1="37.4" y1="27.4" x2="27.5" y2="17.5"/>
+                <line x1="60" y1="18" x2="60" y2="4"/>
+                <line x1="82.6" y1="27.4" x2="92.5" y2="17.5"/>
+              </g>
+              <path class="lamp-glass" d="M60 20 a28 28 0 0 1 28 28 c0 14 -9 21 -9 28 v7 h-38 v-7 c0 -7 -9 -14 -9 -28 a28 28 0 0 1 28 -28 z"/>
+              <path class="lamp-filament" d="M53 54 v7 l3 6 h8 l3 -6 v-7"/>
+              <path class="lamp-base" d="M43 86 h34 v7 a6 6 0 0 1 -6 6 h-22 a6 6 0 0 1 -6 -6 z"/>
+              <path class="lamp-base" d="M45 92 h30 M45 97 h30"/>
+            </svg>
+          </div>
+          <div class="panel-action">
+            <button class="btn-big" id="btn-lamp" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
+              <span id="btn-lamp-label">NYALAKAN</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Panel Pompa ================= -->
+      <div class="panel" id="panel-pompa">
+        <div class="panel-head">
+          <span class="panel-title">POMPA AIR</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel-content">
+            <div class="pump-wrap">
+              <img class="pump-body" src="assets/Water_Pump/pump-body.png" alt="Body Pompa">
+              <img class="pump-impeller" id="pump-impeller" src="assets/Water_Pump/pump-impeller.png" alt="Impeller">
+            </div>
+          </div>
+          <div class="panel-action">
+            <button class="btn-big" id="btn-pump" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
+              <span id="btn-pump-label">NYALAKAN</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Panel Pintu / Dorlock (power-to-lock) =================
+           Arus ON  = TERKUNCI | Arus OFF = TERBUKA
+           Animasi: gagang pintu turun saat membuka, normal saat mengunci -->
+      <div class="panel" id="panel-dorlock">
+        <div class="panel-head">
+          <span class="panel-title">PINTU</span>
+        </div>
+        <div class="panel-body dorlock-body">
+          <div class="panel-content dorlock-visual">
+            <div class="dorlock-wrap" id="dorlock-visual">
+              <img class="dorlock-door-img" src="assets/Dorlock/dorlock-door-body.png" alt="Pintu dengan dorlock">
+              <img class="dorlock-plate-img" src="assets/Dorlock/dorlock-plate-base.png" alt="Plat dorlock">
+              <img class="dorlock-lever-img" id="dorlock-lever-img" src="assets/Dorlock/dorlock-handle-only.png" alt="Gagang dorlock">
+              <img class="dorlock-led-img" id="dorlock-led" src="assets/Dorlock/led-open.png" alt="Indikator LED">
+            </div>
+          </div>
+          <div class="panel-action">
+            <button class="btn-big" id="btn-door" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <!-- Shackle TERKUNCI (kondisi default) -->
+                <g class="shackle-closed">
+                  <path class="lock-shackle-fixed" d="M17 11V7"/>
+                  <path class="lock-shackle-move" d="M17 7a5 5 0 0 0-10 0v4"/>
+                </g>
+                <!-- Shackle TERBUKA (digambar manual, gaya ikon lock_open):
+                     kaki kiri tetap di badan, busur + kaki kanan terangkat
+                     & bergeser ke kanan atas (lepas dari badan) -->
+                <g class="shackle-open">
+                  <path d="M7 11V7"/>
+                  <path d="M7 7a5 5 0 0 1 10 0l2-1.8"/>
+                </g>
+              </svg>
+              <span id="btn-door-label">UNLOCK</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Panel AC ================= -->
+      <div class="panel" id="panel-ac">
+        <div class="panel-head">
+          <span class="panel-title">A/C PANASONIC</span>
+        </div>
+        <div class="panel-body">
+          <div class="panel-content">
+            <div class="ac-controls ac-actual-row" id="ac-actual-row">
+              <div class="ac-ctrl-group ac-actual-col">
+                <span class="ac-ctrl-title ac-actual-title">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z"/>
+                    <circle cx="12" cy="18.4" r="3.4"/>
+                  </svg>
+                  SUHU AKTUAL
+                </span>
+                <span class="ac-actual-value-wrap">
+                  <span class="ac-actual-value" id="ac-room-temp-value">--</span>
+                  <span class="ac-actual-unit">&deg;C</span>
+                </span>
+              </div>
+              <div class="ac-ctrl-group ac-actual-col">
+                <span class="ac-ctrl-title ac-actual-title">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                  KELEMBABAN 
+                </span>
+                <span class="ac-actual-value-wrap">
+                  <span class="ac-actual-value" id="ac-actual-kelembaban">--</span>
+                  <span class="ac-actual-unit">%</span>
+                </span>
+              </div>
+            </div>
+            <div class="ac-controls">
+              <div class="ac-ctrl-group ac-ctrl-temp">
+                <span class="ac-ctrl-title">
+                  SUHU
+                </span>
+                <div class="ac-temp-display">
+                  <svg class="ac-thermo" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="thermo-tube" d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z"/>
+                    <circle class="thermo-bulb" cx="12" cy="18.4" r="3.4"/>
+                  </svg>
+                  <span class="ac-temp-value" id="ac-temp">24</span><span class="ac-temp-unit">&deg;C</span>
+                </div>
+                <div class="ac-temp-row">
+                  <button class="ac-temp-btn" id="ac-temp-down" type="button">-</button>
+                  <button class="ac-temp-btn" id="ac-temp-up" type="button">+</button>
+                </div>
+              </div>
+              <div class="ac-ctrl-group ac-ctrl-fan">
+                <span class="ac-ctrl-title">
+                  FAN SPEED
+                </span>
+                <div class="ac-fan-btns">
+                  <button class="ac-fan-btn active" data-fan="AUTO">
+                    <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4h4M3 8h4M3 12h4"/></svg>
+                    AUTO
+                  </button>
+                  <button class="ac-fan-btn" data-fan="LOW">
+                    <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h10"/></svg>
+                    LOW
+                  </button>
+                  <button class="ac-fan-btn" data-fan="MEDIUM">
+                    <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M3 12h10"/></svg>
+                    MED
+                  </button>
+                  <button class="ac-fan-btn" data-fan="HIGH">
+                    <svg class="icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 4h10M3 8h10M3 12h10"/></svg>
+                    HIGH
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="automation-badge" id="ac-automation-badge" hidden>MODE OTOMATIS AKTIF</div>
+          </div>
+          <div class="panel-action">
+            <button class="btn-big" id="btn-ac" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
+              <span id="btn-ac-label">NYALAKAN A/C</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: MENU (pilihan) ============ -->
+  <div class="view" id="view-menu" hidden>
+    <div class="menu-content">
+      <button id="menu-btn-grafik" class="menu-choice" type="button">
+        <span class="menu-choice-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 15l4-6 4 3 5-8"/>
+            <circle cx="7" cy="15" r="1"/>
+            <circle cx="11" cy="9" r="1"/>
+            <circle cx="15" cy="12" r="1"/>
+            <circle cx="20" cy="4" r="1"/>
+          </svg>
+        </span>
+        <span class="menu-choice-text">
+          <span class="menu-choice-title">PUMP GRAPH</span>
+          <span class="menu-choice-desc">Monitor listrik pompa</span>
+        </span>
+        <span class="menu-choice-arrow">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+      <button id="menu-btn-logging" class="menu-choice" type="button">
+        <span class="menu-choice-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="1"/>
+            <path d="M9 12h6M9 16h6"/>
+          </svg>
+        </span>
+        <span class="menu-choice-text">
+          <span class="menu-choice-title">LOGGING</span>
+          <span class="menu-choice-desc">Riwayat event &amp; aktivitas sistem</span>
+        </span>
+        <span class="menu-choice-arrow">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+      <button id="menu-btn-automation" class="menu-choice" type="button">
+        <span class="menu-choice-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="10" rx="5"/>
+            <circle cx="17" cy="12" r="3"/>
+            <path d="M8 12h.01"/>
+          </svg>
+        </span>
+        <span class="menu-choice-text">
+          <span class="menu-choice-title">AUTOMATION RULE</span>
+          <span class="menu-choice-desc">Atur A/C, lampu &amp; pompa otomatis</span>
+        </span>
+        <span class="menu-choice-arrow">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+      <button id="menu-btn-runninghours" class="menu-choice" type="button">
+        <span class="menu-choice-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 14l3.5-3.5"/>
+            <path d="M3.34 19a10 10 0 1 1 17.32 0"/>
+          </svg>
+        </span>
+        <span class="menu-choice-text">
+          <span class="menu-choice-title">RUNNING HOURS</span>
+          <span class="menu-choice-desc">Batas jam operasi &amp; pengingat maintenance</span>
+        </span>
+        <span class="menu-choice-arrow">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+      <button id="menu-btn-gear" class="menu-choice" type="button">
+        <span class="menu-choice-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </span>
+        <span class="menu-choice-text">
+          <span class="menu-choice-title">SETTINGS</span>
+          <span class="menu-choice-desc">Notifikasi Telegram &amp; ganti password</span>
+        </span>
+        <span class="menu-choice-arrow">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+    </div>
+    <div class="menu-footer">
+      <button id="menu-btn-back" class="btn-back btn-back-block" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI KE DASHBOARD</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: LOGGING ============ -->
+  <div class="view" id="view-logging" hidden>
+    <div class="view-header">
+      <button id="logging-btn-back" class="btn-back" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI</span>
+      </button>
+    </div>
+    <div class="logging-toolbar">
+      <button id="logging-btn-csv" class="btn-save btn-csv" type="button">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+        <span>UNDUH CSV</span>
+      </button>
+    </div>
+    <div class="logging-list" id="logging-list"><!-- diisi JS --></div>
+  </div>
+
+  <!-- ============ VIEW: AUTOMATION RULE ============ -->
+  <div class="view" id="view-automation" hidden>
+    <div class="view-header">
+      <button id="automation-btn-back" class="btn-back" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI</span>
+      </button>
+    </div>
+    <div class="automation-wrap">
+      <!-- ===== Grup A/C ===== -->
+      <div class="auto-panel" id="auto-panel-ac">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/>
+                <path d="M12 12v.01"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">A/C PANASONIC</span>
+            <span class="auto-panel-status" id="ac-auto-status-badge">NONAKTIF</span>
+          </span>
+          <label class="switch" title="Aktifkan / nonaktifkan otomasi AC">
+            <input type="checkbox" id="ac-auto-enabled">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="auto-live" id="ac-live">
+          <span class="auto-live-item">Suhu Aktual: <b id="ac-live-suhu">--</b>&nbsp;°C</span>
+          <span class="auto-live-item">Status AC: <b id="ac-live-power">MATI</b></span>
+          <span class="auto-live-item">Set: <b id="ac-live-set">24</b>&nbsp;°C</span>
+        </div>
+
+        <div class="auto-params">
+          <div class="auto-row">
+            <span class="auto-label">A/C ON &mdash; ambang nyala</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" id="ac-on-temp" min="16" max="40" step="1" readonly>
+              <span class="auto-unit">&deg;C</span>
+              <button type="button" class="auto-edit" data-target="ac-on-temp" aria-label="Edit suhu A/C ON">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">A/C OFF &mdash; ambang mati</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" id="ac-off-temp" min="10" max="30" step="1" readonly>
+              <span class="auto-unit">&deg;C</span>
+              <button type="button" class="auto-edit" data-target="ac-off-temp" aria-label="Edit suhu A/C OFF">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">TIMEOUT &mdash; batas waktu pendinginan</span>
+            <label class="switch" title="Aktifkan peringatan timeout AC">
+              <input type="checkbox" id="ac-timeout-enabled">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Durasi timeout (menit)</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" id="ac-timeout-minutes" min="1" max="1440" step="1" readonly>
+              <span class="auto-unit">MENIT</span>
+              <button type="button" class="auto-edit" data-target="ac-timeout-minutes" aria-label="Edit durasi timeout">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="auto-hint" id="ac-hysteresis-hint">A/C ON harus lebih besar dari A/C OFF (hysteresis) agar AC tidak nyala-mati berulang.</div>
+        <div class="auto-hint">Timeout hanya mengirim peringatan ke log jika suhu aktual belum mencapai A/C OFF dalam durasi yang diatur.</div>
+
+        <div class="auto-actions">
+          <button id="ac-auto-save" class="btn-save" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            <span>SIMPAN</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Grup Lampu ===== -->
+      <div class="auto-panel" id="auto-panel-lampu">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/>
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">LAMPU</span>
+            <span class="auto-panel-status" id="lampu-auto-status-badge">NONAKTIF</span>
+          </span>
+          <label class="switch" title="Aktifkan / nonaktifkan otomasi lampu">
+            <input type="checkbox" id="lampu-auto-enabled">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="auto-live" id="lampu-live">
+          <span class="auto-live-item">Status lampu: <b id="lampu-live-status">MATI</b></span>
+        </div>
+
+        <div class="auto-params">
+                  <div class="auto-row">
+                    <span class="auto-label">Lampu ON &mdash; jam</span>
+                    <span class="auto-input-wrap">
+                      <input class="auto-input" type="time" id="lampu-on-time" readonly>
+                      <button type="button" class="auto-edit" data-target="lampu-on-time" aria-label="Edit jam lampu ON">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                      </button>
+                    </span>
+                  </div>
+                  <div class="auto-row">
+                    <span class="auto-label">Lampu OFF &mdash; jam</span>
+                    <span class="auto-input-wrap">
+                      <input class="auto-input" type="time" id="lampu-off-time" readonly>
+                      <button type="button" class="auto-edit" data-target="lampu-off-time" aria-label="Edit jam lampu OFF">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+
+        <div class="auto-hint">Lampu menyala/mati otomatis sesuai jam yang diatur.</div>
+
+        <div class="auto-actions">
+          <button id="lampu-auto-save" class="btn-save" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            <span>SIMPAN</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Grup Pompa (baru) ===== -->
+      <div class="auto-panel" id="auto-panel-pompa">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.7l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                <path d="M8 21h8"/>
+                <path d="M10 17.5h4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">POMPA AIR</span>
+            <span class="auto-panel-status" id="pompa-auto-status-badge">NONAKTIF</span>
+          </span>
+          <label class="switch" title="Aktifkan / nonaktifkan otomasi pompa">
+            <input type="checkbox" id="pompa-auto-enabled">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="auto-live" id="pompa-live">
+          <span class="auto-live-item">Status pompa: <b id="pompa-live-status">MATI</b></span>
+          <span class="auto-live-item">Arus: <b id="pompa-live-arus">--</b>&nbsp;A</span>
+        </div>
+
+        <div class="auto-params">
+          <div class="auto-row">
+            <span class="auto-label">Pompa ON &mdash; jam</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="time" id="pompa-on-time" readonly>
+              <button type="button" class="auto-edit" data-target="pompa-on-time" aria-label="Edit jam pompa ON">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Pompa OFF &mdash; jam</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="time" id="pompa-off-time" readonly>
+              <button type="button" class="auto-edit" data-target="pompa-off-time" aria-label="Edit jam pompa OFF">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">TIMEOUT ARUS &mdash; deteksi pompa bermasalah</span>
+            <label class="switch" title="Aktifkan peringatan timeout arus pompa">
+              <input type="checkbox" id="pompa-timeout-enabled">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Ambang arus minimum</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" id="pompa-current-threshold" min="1" max="20" step="1" readonly>
+              <span class="auto-unit">A</span>
+              <button type="button" class="auto-edit" data-target="pompa-current-threshold" aria-label="Edit ambang arus pompa">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Durasi timeout (menit)</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" id="pompa-timeout-minutes" min="1" max="720" step="1" readonly>
+              <span class="auto-unit">MENIT</span>
+              <button type="button" class="auto-edit" data-target="pompa-timeout-minutes" aria-label="Edit durasi timeout arus pompa">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="auto-hint" id="pompa-timeout-hint">Jika pompa menyala tetapi arus tidak pernah mencapai ambang minimum dalam durasi yang diatur, sistem mencatat peringatan &amp; mengirim notifikasi Telegram.</div>
+
+        <div class="auto-actions">
+          <button id="pompa-auto-save" class="btn-save" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            <span>SIMPAN</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auto-status" id="auto-save-status" hidden></div>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: GRAFIK POMPA (PZEM) ============ -->
+  <div class="view" id="view-grafik" hidden>
+    <div class="view-header">
+      <button id="grafik-btn-back" class="btn-back" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI</span>
+      </button>
+    </div>
+    <div class="grafik-wrap">
+      <div class="grafik-toolbar">
+        <button id="grafik-btn-csv" class="btn-save btn-csv" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          <span>UNDUH CSV</span>
+        </button>
+      </div>
+      <div class="ac-controls grafik-tiles">
+        <div class="ac-ctrl-group">
+          <span class="ac-ctrl-title">VOLT</span>
+          <span class="ac-actual-value-wrap">
+            <span class="ac-actual-value" id="pzem-volt">--</span>
+            <span class="ac-actual-unit">V</span>
+          </span>
+        </div>
+        <div class="ac-ctrl-group">
+          <span class="ac-ctrl-title">FREKUENSI</span>
+          <span class="ac-actual-value-wrap">
+            <span class="ac-actual-value" id="pzem-hz">--</span>
+            <span class="ac-actual-unit">Hz</span>
+          </span>
+        </div>
+        <div class="ac-ctrl-group">
+          <span class="ac-ctrl-title">COS &phi;</span>
+          <span class="ac-actual-value-wrap">
+            <span class="ac-actual-value" id="pzem-cosphi">--</span>
+            <span class="ac-actual-unit">&phi;</span>
+          </span>
+        </div>
+      </div>
+      <div class="auto-panel grafik-chart-panel">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-name">ARUS (A)</span>
+          </span>
+          <span class="grafik-now">Sekarang: <b id="pzem-arus-now">--</b>&nbsp;A</span>
+        </div>
+        <div class="grafik-canvas-wrap"><canvas id="chart-arus" height="170"></canvas></div>
+      </div>
+      <div class="auto-panel grafik-chart-panel">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-name">DAYA (W)</span>
+          </span>
+          <span class="grafik-now">Sekarang: <b id="pzem-daya-now">--</b>&nbsp;W</span>
+        </div>
+        <div class="grafik-canvas-wrap"><canvas id="chart-daya" height="170"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VIEW: RUNNING HOURS ============ -->
+  <div class="view" id="view-runninghours" hidden>
+    <div class="view-header">
+      <button id="rh-btn-back" class="btn-back" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI</span>
+      </button>
+    </div>
+    <div class="automation-wrap">
+      <div class="auto-panel" id="rh-panel-lampu">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1.3.5 2.6 1.5 3.5.8.8 1.3 1.5 1.5 2.5"/>
+                <path d="M9 18h6"/><path d="M10 22h4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">LAMPU</span>
+            <span class="auto-panel-status" id="rh-badge-lampu">--</span>
+          </span>
+        </div>
+        <div class="rh-body">
+          <div class="rh-cell rh-cell-set">
+            <span class="rh-cell-label">SET TIME</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" step="0.1" min="1" max="10000" data-decimal="1" id="rh-set-lampu" readonly>
+              <span class="auto-unit">JAM</span>
+              <button type="button" class="auto-edit" data-target="rh-set-lampu" aria-label="Edit Set Time Lampu">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="rh-cell rh-cell-remain">
+            <span class="rh-cell-label">COUNTER DOWN</span>
+            <span class="rh-remain-value" id="rh-remain-lampu">--</span>
+            <span class="rh-remain-unit">JAM</span>
+          </div>
+        </div>
+        <div class="rh-bar"><span class="rh-bar-fill" id="rh-bar-lampu"></span></div>
+        <div class="auto-actions">
+          <button id="rh-reset-lampu" class="btn-save btn-reset" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>RESET</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auto-panel" id="rh-panel-pompa">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.7l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                <path d="M8 21h8"/><path d="M10 17.5h4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">POMPA AIR</span>
+            <span class="auto-panel-status" id="rh-badge-pompa">--</span>
+          </span>
+        </div>
+        <div class="rh-body">
+          <div class="rh-cell rh-cell-set">
+            <span class="rh-cell-label">SET TIME</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" step="0.1" min="1" max="10000" data-decimal="1" id="rh-set-pompa" readonly>
+              <span class="auto-unit">JAM</span>
+              <button type="button" class="auto-edit" data-target="rh-set-pompa" aria-label="Edit Set Time Pompa">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="rh-cell rh-cell-remain">
+            <span class="rh-cell-label">COUNTER DOWN</span>
+            <span class="rh-remain-value" id="rh-remain-pompa">--</span>
+            <span class="rh-remain-unit">JAM</span>
+          </div>
+        </div>
+        <div class="rh-bar"><span class="rh-bar-fill" id="rh-bar-pompa"></span></div>
+        <div class="auto-actions">
+          <button id="rh-reset-pompa" class="btn-save btn-reset" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>RESET</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auto-panel" id="rh-panel-ac">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.827 16.379a6.082 6.082 0 0 1-8.618-7.002l5.412 1.45a6.082 6.082 0 0 1 7.002-8.618l-1.45 5.412a6.082 6.082 0 0 1 8.618 7.002l-5.412-1.45a6.082 6.082 0 0 1-7.002 8.618l1.45-5.412Z"/>
+                <path d="M12 12v.01"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">A/C PANASONIC</span>
+            <span class="auto-panel-status" id="rh-badge-ac">--</span>
+          </span>
+        </div>
+        <div class="rh-body">
+          <div class="rh-cell rh-cell-set">
+            <span class="rh-cell-label">SET TIME</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" step="0.1" min="1" max="10000" data-decimal="1" id="rh-set-ac" readonly>
+              <span class="auto-unit">JAM</span>
+              <button type="button" class="auto-edit" data-target="rh-set-ac" aria-label="Edit Set Time A/C">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="rh-cell rh-cell-remain">
+            <span class="rh-cell-label">COUNTER DOWN</span>
+            <span class="rh-remain-value" id="rh-remain-ac">--</span>
+            <span class="rh-remain-unit">JAM</span>
+          </div>
+        </div>
+        <div class="rh-bar"><span class="rh-bar-fill" id="rh-bar-ac"></span></div>
+        <div class="auto-actions">
+          <button id="rh-reset-ac" class="btn-save btn-reset" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>RESET</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Grup Dorlock (baru) ===== -->
+      <div class="auto-panel" id="rh-panel-dorlock">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="10" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">DOORLOCK</span>
+            <span class="auto-panel-status" id="rh-badge-dorlock">--</span>
+          </span>
+        </div>
+        <div class="rh-body">
+          <div class="rh-cell rh-cell-set">
+            <span class="rh-cell-label">SET TIME</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input" type="number" step="0.1" min="1" max="10000" data-decimal="1" id="rh-set-dorlock" readonly>
+              <span class="auto-unit">JAM</span>
+              <button type="button" class="auto-edit" data-target="rh-set-dorlock" aria-label="Edit Set Time Dorlock">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              </button>
+            </span>
+          </div>
+          <div class="rh-cell rh-cell-remain">
+            <span class="rh-cell-label">COUNTER DOWN</span>
+            <span class="rh-remain-value" id="rh-remain-dorlock">--</span>
+            <span class="rh-remain-unit">JAM</span>
+          </div>
+        </div>
+        <div class="rh-bar"><span class="rh-bar-fill" id="rh-bar-dorlock"></span></div>
+        <div class="auto-actions">
+          <button id="rh-reset-dorlock" class="btn-save btn-reset" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            <span>RESET</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auto-actions rh-save-row">
+        <button id="rh-save-all" class="btn-save" type="button">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+          <span>SIMPAN</span>
+        </button>
+      </div>
+      <div class="auto-status" id="rh-save-status" hidden></div>
+    </div>
+  </div>
+  <!-- ============ VIEW: PENGATURAN (GEAR) ============ -->
+  <div class="view" id="view-gear" hidden>
+    <div class="view-header">
+      <button id="gear-btn-back" class="btn-back" type="button">
+        <span class="btn-back-icon">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </span>
+        <span>KEMBALI</span>
+      </button>
+    </div>
+    <div class="automation-wrap gear-grid">
+      <!-- ===== Konfigurasi Telegram ===== -->
+      <div class="auto-panel" id="tg-panel">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2 11 13"/>
+                <path d="M22 2 15 22l-4-9-9-4z"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">NOTIFIKASI TELEGRAM</span>
+            <span class="auto-panel-status" id="tg-status-badge">BELUM DIATUR</span>
+          </span>
+        </div>
+        <div class="auto-params">
+          <div class="auto-row">
+            <span class="auto-label">Bot Token</span>
+            <span class="auto-input-wrap tg-token-wrap">
+              <input class="auto-input tg-input" type="text" id="tg-bot-token" placeholder="123456:ABC-DEF..." autocomplete="off" data-osk-title="BOT TOKEN" data-osk-label="TOKEN">
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Chat / Group ID</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input tg-input" type="text" id="tg-chat-id" placeholder="-1001234567890" autocomplete="off" data-osk-title="CHAT / GROUP ID" data-osk-label="CHAT ID">
+            </span>
+          </div>
+        </div>
+        <div class="auto-hint">Notifikasi peringatan (timeout pompa &amp; running hours) dikirim ke chat/group ini.</div>
+        <div class="auto-actions">
+          <button id="tg-save" class="btn-save" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            <span>SIMPAN</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== Ganti Password User ===== -->
+      <div class="auto-panel" id="gear-password-panel">
+        <div class="auto-panel-head">
+          <span class="auto-panel-title">
+            <span class="auto-panel-icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+              </svg>
+            </span>
+            <span class="auto-panel-name">GANTI PASSWORD USER</span>
+          </span>
+        </div>
+        <div class="auto-params" id="pwd-form">
+          <div class="auto-row">
+            <span class="auto-label">Password Lama</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input tg-input" type="password" id="pwd-old" placeholder="Password lama" autocomplete="off" maxlength="64" data-osk="pin" data-osk-mask="1" data-osk-title="PASSWORD LAMA" data-osk-label="PASSWORD">
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Password Baru</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input tg-input" type="password" id="pwd-new" placeholder="Password baru" autocomplete="off" maxlength="8" data-osk="pin" data-osk-mask="1" data-osk-title="PASSWORD BARU" data-osk-label="PASSWORD">
+            </span>
+          </div>
+          <div class="auto-row">
+            <span class="auto-label">Ulangi Password Baru</span>
+            <span class="auto-input-wrap">
+              <input class="auto-input tg-input" type="password" id="pwd-confirm" placeholder="Ulangi password baru" autocomplete="off" maxlength="8" data-osk="pin" data-osk-mask="1" data-osk-title="ULANGI PASSWORD" data-osk-label="PASSWORD">
+            </span>
+          </div>
+        </div>
+        
+        <div class="auto-actions">
+          <button id="pwd-save" class="btn-save" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
+            <span>SIMPAN</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auto-status" id="gear-save-status" hidden></div>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     KEYPAD MODAL (input touchscreen tanpa keyboard/mouse)
+     Dipakai field suhu (A/C ON/OFF), jam (Lampu/Pompa ON/OFF),
+     ambang arus & timeout Pompa, Set Time Running Hours (desimal)
+     ============================================================ -->
+<div class="keypad-overlay" id="keypad-overlay" hidden>
+  <div class="keypad-modal" role="dialog" aria-modal="true" aria-labelledby="keypad-title">
+    <div class="keypad-header">
+      <span class="keypad-title" id="keypad-title">INPUT NILAI</span>
+      <button type="button" class="keypad-close" id="keypad-close" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="keypad-display" id="keypad-display"></div>
+    <div class="keypad-error" id="keypad-error" hidden></div>
+    <div class="keypad-grid">
+      <button type="button" class="keypad-key" data-k="1">1</button>
+      <button type="button" class="keypad-key" data-k="2">2</button>
+      <button type="button" class="keypad-key" data-k="3">3</button>
+      <button type="button" class="keypad-key" data-k="4">4</button>
+      <button type="button" class="keypad-key" data-k="5">5</button>
+      <button type="button" class="keypad-key" data-k="6">6</button>
+      <button type="button" class="keypad-key" data-k="7">7</button>
+      <button type="button" class="keypad-key" data-k="8">8</button>
+      <button type="button" class="keypad-key" data-k="9">9</button>
+      <button type="button" class="keypad-key keypad-fn" data-act="clear">C</button>
+      <button type="button" class="keypad-key" data-k="0">0</button>
+      <button type="button" class="keypad-key keypad-fn" data-act="back" aria-label="Hapus satu digit">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/><path d="M18 9l-6 6M12 9l6 6"/></svg>
+      </button>
+
+    </div>
+    <div class="keypad-actions">
+      <button type="button" class="keypad-btn keypad-cancel" data-act="cancel">BATAL</button>
+      <button type="button" class="keypad-btn keypad-ok" data-act="ok">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     AUTH MODAL (PIN numerik 4-8 digit, gaya keypad-overlay)
+     SELALU muncul setiap kali masuk Automation Rule / Running Hours
+     ============================================================ -->
+<div class="keypad-overlay" id="auth-overlay" hidden>
+  <div class="keypad-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="keypad-header">
+      <span class="keypad-title" id="auth-title">MASUKKAN PASSWORD</span>
+      <button type="button" class="keypad-close" id="auth-close" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="keypad-display auth-display" id="auth-display"></div>
+    <div class="keypad-error" id="auth-error" hidden></div>
+    <div class="keypad-grid">
+      <button type="button" class="keypad-key" data-k="1">1</button>
+      <button type="button" class="keypad-key" data-k="2">2</button>
+      <button type="button" class="keypad-key" data-k="3">3</button>
+      <button type="button" class="keypad-key" data-k="4">4</button>
+      <button type="button" class="keypad-key" data-k="5">5</button>
+      <button type="button" class="keypad-key" data-k="6">6</button>
+      <button type="button" class="keypad-key" data-k="7">7</button>
+      <button type="button" class="keypad-key" data-k="8">8</button>
+      <button type="button" class="keypad-key" data-k="9">9</button>
+      <button type="button" class="keypad-key keypad-fn" data-act="aclear">C</button>
+      <button type="button" class="keypad-key" data-k="0">0</button>
+      <button type="button" class="keypad-key keypad-fn" data-act="aback" aria-label="Hapus satu digit">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/><path d="M18 9l-6 6M12 9l6 6"/></svg>
+      </button>
+    </div>
+    <div class="keypad-actions">
+      <button type="button" class="keypad-btn keypad-cancel" data-act="acancel">BATAL</button>
+      <button type="button" class="keypad-btn keypad-ok" id="auth-ok" data-act="aok">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CALENDAR MODAL (pilih rentang tanggal From -> To, touchscreen)
+     Dipakai bersama oleh halaman Logging & Grafik untuk Unduh CSV
+     ============================================================ -->
+<div class="keypad-overlay" id="calendar-overlay" hidden>
+  <div class="keypad-modal calendar-modal" role="dialog" aria-modal="true" aria-labelledby="cal-title">
+    <div class="keypad-header">
+      <span class="keypad-title" id="cal-title">PILIH RENTANG TANGGAL</span>
+      <button type="button" class="keypad-close" id="cal-close" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cal-nav">
+      <button type="button" class="cal-nav-btn" id="cal-prev" aria-label="Bulan sebelumnya">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="cal-month-label" id="cal-month-label">-</span>
+      <button type="button" class="cal-nav-btn" id="cal-next" aria-label="Bulan berikutnya">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="cal-grid" id="cal-grid"><!-- diisi JS --></div>
+    <div class="cal-range-info" id="cal-range-info">Tap tanggal pertama (From), lalu tanggal kedua (To)</div>
+    <div class="keypad-error" id="cal-error" hidden></div>
+    <div class="keypad-actions">
+      <button type="button" class="keypad-btn keypad-cancel" id="cal-cancel">BATAL</button>
+      <button type="button" class="keypad-btn keypad-ok" id="cal-ok">UNDUH</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ON-SCREEN KEYBOARD (QWERTY + numpad) — input teks touchscreen
+     Dipakai field Bot Token, Chat/Group ID & form Ganti Password
+     ============================================================ -->
+<div class="keypad-overlay" id="osk-overlay" hidden>
+  <div class="keypad-modal osk-modal" id="osk-modal" role="dialog" aria-modal="true" aria-labelledby="osk-title">
+    <div class="keypad-header">
+      <span class="keypad-title" id="osk-title">INPUT</span>
+      <button type="button" class="keypad-close" id="osk-close" aria-label="Tutup">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="osk-preview" id="osk-preview">
+      <span class="osk-preview-label" id="osk-preview-label">NILAI</span>
+      <span class="osk-preview-text" id="osk-preview-text"></span>
+    </div>
+    <div class="keypad-error" id="osk-error" hidden></div>
+    <div class="osk-rows" id="osk-rows"><!-- diisi JS --></div>
+    <div class="keypad-actions">
+      <button type="button" class="keypad-btn keypad-cancel" id="osk-cancel">BATAL</button>
+      <button type="button" class="keypad-btn keypad-ok" id="osk-ok">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- mqtt.js via CDN: wajib untuk jalur remote (iot.mixitech.co.id). Untuk kiosk
+     lokal jika internet mati, script ini gagal dimuat -> MQTT dinonaktifkan,
+     kendali tetap jalan lewat WebSocket lokal. -->
+<script src="https://unpkg.com/mqtt@5/dist/mqtt.min.js"></script>
+<script src="app.js?v=52"></script>
+</body>
+</html>
+<!-- pageid: qEmDetqCH6q6Iq -->

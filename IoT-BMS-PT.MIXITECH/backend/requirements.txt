@@ -1,0 +1,8 @@
+# mixreq: qEmDetqCH6q6Iq
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pyserial>=3.5
+paho-mqtt>=2.0
+python-dotenv>=1.0
+certifi>=2024.2.2
+# pins 7mxJPuDFSXZcXd
